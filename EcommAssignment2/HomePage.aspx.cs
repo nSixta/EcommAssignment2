@@ -55,5 +55,10 @@ namespace EcommAssignment2
             label.Text = text;
             label.Visible = true;
         }
+
+        protected void forgotPassLink_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ForgotPassPage.aspx");
+        }
     }
 }
