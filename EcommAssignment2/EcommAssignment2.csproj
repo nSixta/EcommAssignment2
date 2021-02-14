@@ -71,8 +71,10 @@
     <Content Include="App_Data\dragonball_database_log.ldf">
       <DependentUpon>dragonball_database.mdf</DependentUpon>
     </Content>
+    <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
     <Content Include="CSS\SignUpPageStyle.css" />
+    <Content Include="ForgotPassPage.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="Images\bulma_image.png" />
     <Content Include="Images\goku_beerus.jpg" />
@@ -105,6 +107,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ForgotPassPage.aspx.cs">
+      <DependentUpon>ForgotPassPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ForgotPassPage.aspx.designer.cs">
+      <DependentUpon>ForgotPassPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="HomePage.aspx.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

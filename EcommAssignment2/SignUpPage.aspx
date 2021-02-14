@@ -7,7 +7,6 @@
     <title>Sign In</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="CSS/SignUpPageStyle.css" />
-
 </head>
 <body>
     <form id="form1" runat="server">
