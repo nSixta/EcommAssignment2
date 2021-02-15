@@ -73,6 +73,7 @@
     </Content>
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
+    <Content Include="CSS\ProfilePageStyle.css" />
     <Content Include="CSS\SignUpPageStyle.css" />
     <Content Include="ForgotPassPage.aspx" />
     <Content Include="HomePage.aspx" />
