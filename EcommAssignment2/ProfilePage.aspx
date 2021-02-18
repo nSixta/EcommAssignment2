@@ -32,23 +32,20 @@
         <asp:Label ID="profileUsernameLabel" runat="server"></asp:Label>
         <br />
         <br />
-        <asp:Button ID="changePasswordButton" runat="server" CssClass="confirm-button" OnClick="changePasswordButton_Click" Text="Change Password" />
-        <br />
+
+        <asp:Label ID="Label5" runat="server" Text="Password:"></asp:Label>
         <br />
 
-        <asp:Label ID="Label5" runat="server" Text="Password:" Visible="False"></asp:Label>
-        <br />
-
-        <asp:TextBox CssClass="input" ID="profilePassInput" runat="server" Visible="False"></asp:TextBox>
+        <asp:TextBox CssClass="input" ID="profilePassInput" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="profilePasswordLabel" runat="server" Visible="False"></asp:Label>
         <br />
         <br />
 
-        <asp:Label ID="Label6" runat="server" Text="Confirm:" Visible="False"></asp:Label>
+        <asp:Label ID="Label6" runat="server" Text="Confirm Password:"></asp:Label>
         <br />
 
-        <asp:TextBox CssClass="input" ID="profileConfirmPassInput" runat="server" Visible="False"></asp:TextBox>
+        <asp:TextBox CssClass="input" ID="profileConfirmPassInput" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="profileConfirmPassLabel" runat="server" Visible="False"></asp:Label>
         <br />
