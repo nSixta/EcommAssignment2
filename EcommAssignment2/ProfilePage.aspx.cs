@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Web;
@@ -28,14 +29,6 @@ namespace EcommAssignment2
             profileUsernameInput.Text = usernameString;
             profilePassInput.Text = passwordString;
             System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
-        }
-
-        protected void changePasswordButton_Click(object sender, EventArgs e)
-        {
-            Label5.Visible = true;
-            profilePassInput.Visible = true;
-            Label6.Visible = true;
-            profileConfirmPassInput.Visible = true;
         }
 
         protected void changeProfileButton_Click(object sender, EventArgs e)
@@ -99,7 +92,19 @@ namespace EcommAssignment2
             }
             if (validDetails)
             {
-
+                //string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+                string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+                SqlConnection connection = new SqlConnection(source);
+                connection.Open();
+                SqlCommand command = connection.CreateCommand();
+                command.CommandType = System.Data.CommandType.Text;
+                command.CommandText = "UPDATE client_table SET first_name ='" + firstNameString +
+                                        "', last_name = '" + lastNameString +
+                                        "', username = '" + usernameString +
+                                        "', password = '" + passwordString +
+                                        "' WHERE client_id = " + idString;
+                command.ExecuteNonQuery();
+                connection.Close();
             }
         }
 
