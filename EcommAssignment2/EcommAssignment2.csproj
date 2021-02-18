@@ -97,14 +97,17 @@
     <Content Include="menu\ramen.jpg" />
     <Content Include="menu\ribsticks.jpg" />
     <Content Include="menu\senzu_beans.jpg" />
-    <Content Include="menu\strawberry juioce.jpg" />
+    <Content Include="menu\strawberry_juice.jpg" />
     <Content Include="menu\sushi.jpg" />
     <Content Include="menu\tofu.jpg" />
     <Content Include="menu\tonkatsu.jpg" />
     <Content Include="menu\wine.jpg" />
+    <Content Include="CSS\menu_page_stylesheet.css" />
     <Content Include="ProfilePage.aspx" />
     <Content Include="SignUpPage.aspx" />
+    <Content Include="StyleSheet1.css" />
     <Content Include="Web.config" />
+    <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ForgotPassPage.aspx.cs">
@@ -149,6 +152,13 @@
     </Compile>
     <Compile Include="SignUpPage.aspx.designer.cs">
       <DependentUpon>SignUpPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
