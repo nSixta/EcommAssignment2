@@ -11,7 +11,7 @@ namespace EcommAssignment2
 {
 
 
-    public partial class MainMenu
+    public partial class WebForm1
     {
 
         /// <summary>
