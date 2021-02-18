@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
@@ -23,17 +24,40 @@ namespace EcommAssignment2
 
         protected void signInButton_Click(object sender, EventArgs e)
         {
+            string idString = "";
+            string firstNameString = "";
+            string lastNameString = "";
+            string usernameString = "";
+            string passwordString = "";
+
             try
             {
                 string username = usernameTextBox.Text;
                 string password = passwordTextBox.Text;
-                string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+                //string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+                string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
                 SqlConnection connection = new SqlConnection(source);
                 connection.Open();
                 SqlCommand command = new SqlCommand("SELECT * FROM client_table WHERE username = '" + username + "' AND password = '" + password + "'", connection);
                 SqlDataReader sqlDataReader = command.ExecuteReader();
                 if (sqlDataReader.Read())
                 {
+                    DataSet dataSet = new DataSet();
+                    SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
+                    sqlDataAdapter.Fill(dataSet);
+                    if (dataSet.Tables[0].Rows.Count > 0)
+                    {
+                        idString = dataSet.Tables[0].Rows[0]["client_id"].ToString();
+                        firstNameString = dataSet.Tables[0].Rows[0]["first_name"].ToString();
+                        lastNameString = dataSet.Tables[0].Rows[0]["last_name"].ToString();
+                        usernameString = dataSet.Tables[0].Rows[0]["username"].ToString();
+                        passwordString = dataSet.Tables[0].Rows[0]["password"].ToString();
+                    }
+                    Session["idString"] = idString;
+                    Session["firstNameString"] = firstNameString;
+                    Session["lastNameString"] = lastNameString;
+                    Session["usernameString"] = usernameString;
+                    Session["passwordString"] = passwordString;
                     Response.Redirect("MainMenu.aspx");
                 }
                 else
