@@ -24,9 +24,6 @@
         <br />
         <br />
 
-        <asp:Label ID="Label3" runat="server" Text="Email:"></asp:Label>
-        <br />
-
         <asp:Label ID="Label4" runat="server" Text="Username:"></asp:Label>
         <br />
 

@@ -25,6 +25,7 @@ namespace EcommAssignment2
             lastNameString = Session["lastNameString"].ToString();
             usernameString = Session["usernameString"].ToString();
             passwordString = Session["passwordString"].ToString();
+            System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
             loadCards();
         }
 
@@ -91,7 +92,8 @@ namespace EcommAssignment2
         
         private SqlConnection createConnectionDB()
         {
-            String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            //String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
 
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
@@ -116,6 +118,9 @@ namespace EcommAssignment2
             return dataSet;
         }
 
-
+        protected void profileLink_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("ProfilePage.aspx?idString=" + idString + "&firstNameString=" + firstNameString + "&lastNameString=" + lastNameString + "&usernameString=" + usernameString + "&passwordString=" + passwordString);
+        }
     }
 }

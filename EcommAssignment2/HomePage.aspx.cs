@@ -42,6 +42,8 @@ namespace EcommAssignment2
                 SqlDataReader sqlDataReader = command.ExecuteReader();
                 if (sqlDataReader.Read())
                 {
+                    connection.Close();
+                    connection.Open();
                     DataSet dataSet = new DataSet();
                     SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(command);
                     sqlDataAdapter.Fill(dataSet);
@@ -59,6 +61,7 @@ namespace EcommAssignment2
                     Session["usernameString"] = usernameString;
                     Session["passwordString"] = passwordString;
                     Response.Redirect("MainMenu.aspx");
+                    //Response.Redirect("MainMenu.aspx");
                 }
                 else
                 {
