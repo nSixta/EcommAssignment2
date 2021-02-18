@@ -51,13 +51,13 @@ namespace EcommAssignment2
                 //createNameLabel
                 HtmlGenericControl h3 = new HtmlGenericControl("h3");
                 Label lbl = new Label();
-                lbl.Text = dataSet.Tables[0].Rows[0]["name"].ToString();
+                lbl.Text = dataSet.Tables[0].Rows[c]["name"].ToString();
                 h3.Controls.Add(lbl);
                 div.Controls.Add(h3);
 
                 //create price
                 Label price = new Label();
-                price.Text = dataSet.Tables[0].Rows[0]["price"].ToString();
+                price.Text = dataSet.Tables[0].Rows[c]["price"].ToString();
                 div.Controls.Add(price);
 
                 //create InputBox
@@ -66,36 +66,33 @@ namespace EcommAssignment2
                 tb.Text = "1";
                 div.Controls.Add(tb);
 
+                //createButton  
+                Button btn = new Button();
+                btn.Text = "Add To order";
+                btn.Click += Btn_Click;
+
+                div.Controls.Add(btn);
                 //append To MainDiv
                 mainDiv.Controls.Add(div);
 
-                /*//add css to card
-                div.Style["width"] = "15%";
-                div.Style["height"] = "40vh";
-                div.Style["background-color"] = "antiquewhite";
-                div.Style["border"] = "1px solid black";
-                div.Style["padding"] = "5px";
-                div.Style["display"] = "inline-block";
-                //add css to photo
-                img.Style["width"] = "80%";
-                img.Style["height"] = "auto";*/
-
-                Button btn = new Button();
-                btn.Text = "Add order";
+                
 
             }
 
             closeConnectionDB(con);
         }
 
-        private void addToOrder()
+        private void Btn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SignUpPage.aspx");
+            Response.Write("abc");
+            //TODO add to database
         }
+
+        
         private SqlConnection createConnectionDB()
         {
-            //String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
-            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
             return con;
