@@ -10,9 +10,22 @@ namespace EcommAssignment2
 {
     public partial class ProfilePage : System.Web.UI.Page
     {
+        string idString = "";
+        string firstNameString = "";
+        string lastNameString = "";
+        string usernameString = "";
+        string passwordString = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            idString = Session["idString"].ToString();
+            firstNameString = Session["firstNameString"].ToString();
+            lastNameString = Session["lastNameString"].ToString();
+            usernameString = Session["usernameString"].ToString();
+            passwordString = Session["passwordString"].ToString();
+            firstNameString = profileFirstNameInput.Text;
+            lastNameString = profileLastNameInput.Text;
+            usernameString = profileUsernameInput.Text;
+            passwordString = profilePassInput.Text;
         }
 
         protected void changePasswordButton_Click(object sender, EventArgs e)
@@ -27,11 +40,10 @@ namespace EcommAssignment2
         {
             bool validDetails = true;
             string firstName = profileFirstNameInput.Text;
-            string lastName = profileFirstNameInput.Text;
-            string email = profileFirstNameInput.Text;
-            string username = profileFirstNameInput.Text;
-            string password = profileFirstNameInput.Text;
-            string confirmPass = profileFirstNameInput.Text;
+            string lastName = profileLastNameInput.Text;
+            string username = profileUsernameInput.Text;
+            string password = profilePassInput.Text;
+            string confirmPass = profileConfirmPassInput.Text;
 
             if (!verifyFirstName(firstName))
             {
@@ -49,15 +61,6 @@ namespace EcommAssignment2
             else
             {
                 labelSuccessMessage(profileLastNameLabel, "Last Name is Valid");
-            }
-
-            if (!verifyEmail(email))
-            {
-                validDetails = false;
-            }
-            else
-            {
-                labelSuccessMessage(profileEmailLabel, "Email is Valid");
             }
 
             if (!verifyUsername(username))
@@ -92,7 +95,10 @@ namespace EcommAssignment2
             {
                 profileConfirmPassLabel.Visible = false;
             }
+            if (validDetails)
+            {
 
+            }
         }
 
         //Check First Name Input
@@ -134,18 +140,6 @@ namespace EcommAssignment2
             else if (name.Any(char.IsDigit))
             {
                 labelErrorMessage(profileLastNameLabel, "Last Name Should NOT Contain Numbers");
-                valid = false;
-            }
-            return valid;
-        }
-
-        //Check Email Input
-        public bool verifyEmail(string email)
-        {
-            bool valid = true;
-            if (String.IsNullOrEmpty(email))
-            {
-                labelErrorMessage(profileEmailLabel, "Email Cannot Be Empty");
                 valid = false;
             }
             return valid;

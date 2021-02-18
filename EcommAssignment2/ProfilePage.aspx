@@ -27,12 +27,6 @@
         <asp:Label ID="Label3" runat="server" Text="Email:"></asp:Label>
         <br />
 
-        <asp:TextBox CssClass="input" ID="profileEmailInput" runat="server"></asp:TextBox>
-        <br />
-        <asp:Label ID="profileEmailLabel" runat="server"></asp:Label>
-        <br />
-        <br />
-
         <asp:Label ID="Label4" runat="server" Text="Username:"></asp:Label>
         <br />
 

@@ -78,24 +78,6 @@ namespace EcommAssignment2
         protected global::System.Web.UI.WebControls.Label Label3;
 
         /// <summary>
-        /// profileEmailInput control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox profileEmailInput;
-
-        /// <summary>
-        /// profileEmailLabel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label profileEmailLabel;
-
-        /// <summary>
         /// Label4 control.
         /// </summary>
         /// <remarks>

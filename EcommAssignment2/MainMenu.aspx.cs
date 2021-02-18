@@ -12,8 +12,19 @@ namespace EcommAssignment2
 {
     public partial class MainMenu : System.Web.UI.Page
     {
+        string idString = "";
+        string firstNameString = "";
+        string lastNameString = "";
+        string usernameString = "";
+        string passwordString = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            idString = Session["idString"].ToString();
+            firstNameString = Session["firstNameString"].ToString();
+            lastNameString = Session["lastNameString"].ToString();
+            usernameString = Session["usernameString"].ToString();
+            passwordString = Session["passwordString"].ToString();
             loadCards();
         }
 
@@ -23,7 +34,7 @@ namespace EcommAssignment2
             //photos
             DataSet dataSet = fillDataSet(con, "select * from menu_table");
 
-            for(int c=0; c < dataSet.Tables[0].Rows.Count; c++)
+            for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
             {
                 //createDiv
                 HtmlGenericControl div = new HtmlGenericControl("div");
@@ -83,7 +94,8 @@ namespace EcommAssignment2
         }
         private SqlConnection createConnectionDB()
         {
-            String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            //String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=G:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
             return con;
