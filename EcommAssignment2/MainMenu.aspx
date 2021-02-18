@@ -7,9 +7,3 @@
     <div id="mainDiv" class="mainDiv" runat="server">
     </div>
 </asp:Content>
-
-
-
-
-
-

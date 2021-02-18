@@ -15,6 +15,7 @@ namespace EcommAssignment2
         string lastNameString = "";
         string usernameString = "";
         string passwordString = "";
+
         protected void Page_Load(object sender, EventArgs e)
         {
             idString = Session["idString"].ToString();
@@ -22,10 +23,11 @@ namespace EcommAssignment2
             lastNameString = Session["lastNameString"].ToString();
             usernameString = Session["usernameString"].ToString();
             passwordString = Session["passwordString"].ToString();
-            firstNameString = profileFirstNameInput.Text;
-            lastNameString = profileLastNameInput.Text;
-            usernameString = profileUsernameInput.Text;
-            passwordString = profilePassInput.Text;
+            profileFirstNameInput.Text = firstNameString;
+            profileLastNameInput.Text = lastNameString;
+            profileUsernameInput.Text = usernameString;
+            profilePassInput.Text = passwordString;
+            System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
         }
 
         protected void changePasswordButton_Click(object sender, EventArgs e)
