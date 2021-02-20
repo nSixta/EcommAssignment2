@@ -2,6 +2,7 @@
     background: url(../Images/kami_house.jpg) no-repeat center center fixed;
     background-size: cover;
     height: auto;
+    font-family: Impact;
 }
 
 .body-section {
@@ -10,7 +11,6 @@
     background-color: rgba(255,255,255,0.85);
     padding: 20px;
     border-radius: 25px;
-    font-family: Impact;
 }
 
 .input[type=text] {

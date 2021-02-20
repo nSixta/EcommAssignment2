@@ -71,6 +71,8 @@
     <Content Include="App_Data\dragonball_database_log.ldf">
       <DependentUpon>dragonball_database.mdf</DependentUpon>
     </Content>
+    <Content Include="ContactPage.aspx" />
+    <Content Include="CSS\contactPageStyle.css" />
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
     <Content Include="CSS\ProfilePageStyle.css" />
@@ -111,6 +113,13 @@
     <Content Include="WebForm1.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ContactPage.aspx.cs">
+      <DependentUpon>ContactPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ContactPage.aspx.designer.cs">
+      <DependentUpon>ContactPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ForgotPassPage.aspx.cs">
       <DependentUpon>ForgotPassPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
