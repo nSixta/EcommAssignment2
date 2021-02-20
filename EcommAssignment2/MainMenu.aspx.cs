@@ -117,10 +117,5 @@ namespace EcommAssignment2
             da.Fill(dataSet);
             return dataSet;
         }
-
-        protected void profileLink_Click(object sender, EventArgs e)
-        {
-            Response.Redirect("ProfilePage.aspx?idString=" + idString + "&firstNameString=" + firstNameString + "&lastNameString=" + lastNameString + "&usernameString=" + usernameString + "&passwordString=" + passwordString);
-        }
     }
 }

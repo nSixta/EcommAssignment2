@@ -61,7 +61,6 @@ namespace EcommAssignment2
                     Session["usernameString"] = usernameString;
                     Session["passwordString"] = passwordString;
                     Response.Redirect("MainMenu.aspx");
-                    //Response.Redirect("MainMenu.aspx");
                 }
                 else
                 {
