@@ -69,6 +69,24 @@ namespace EcommAssignment2
         protected global::System.Web.UI.WebControls.Label emailContactLabel;
 
         /// <summary>
+        /// subjectInput control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox subjectInput;
+
+        /// <summary>
+        /// subjectLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label subjectLabel;
+
+        /// <summary>
         /// messageInput control.
         /// </summary>
         /// <remarks>
