@@ -67,6 +67,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AboutPage.aspx" />
     <Content Include="App_Data\dragonball_database.mdf" />
     <Content Include="App_Data\dragonball_database_log.ldf">
       <DependentUpon>dragonball_database.mdf</DependentUpon>
@@ -111,6 +112,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutPage.aspx.cs">
+      <DependentUpon>AboutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AboutPage.aspx.designer.cs">
+      <DependentUpon>AboutPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ContactPage.aspx.cs">
       <DependentUpon>ContactPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -165,6 +173,7 @@
   <ItemGroup>
     <Content Include="MasterPage.Master" />
     <None Include="packages.config" />
+    <Content Include="PDF_folder\Bulma Fast Food Newsletter.pdf" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
