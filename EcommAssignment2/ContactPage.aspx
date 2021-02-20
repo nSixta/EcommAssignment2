@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="ContactPage.aspx.cs" Inherits="EcommAssignment2.ContactPage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="/MasterPage.Master" AutoEventWireup="true" CodeBehind="ContactPage.aspx.cs" Inherits="EcommAssignment2.ContactPage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="CSS/contactPageStyle.css" rel="stylesheet" />
@@ -10,27 +10,24 @@
         <asp:TextBox CssClass="input" ID="firstNameContactInput" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="firstNameContactLabel" runat="server" Visible="False"></asp:Label>
-
-        <br />
-
         <br />
 
         <p>Last Name:</p>
         <asp:TextBox CssClass="input" ID="lastNameContactInput" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="lastNameContactLabel" runat="server" Visible="False"></asp:Label>
-
-        <br />
-
         <br />
 
         <p>Email:</p>
         <asp:TextBox CssClass="input" ID="emailContactInput" runat="server"></asp:TextBox>
         <br />
         <asp:Label ID="emailContactLabel" runat="server" Visible="False"></asp:Label>
-
         <br />
 
+        <p>Subject:</p>
+        <asp:TextBox CssClass="input" ID="subjectInput" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="subjectLabel" runat="server" Visible="False"></asp:Label>
         <br />
 
         <p>Message:</p>
