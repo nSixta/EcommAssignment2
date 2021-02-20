@@ -98,13 +98,14 @@ namespace EcommAssignment2
                 connection.Open();
                 SqlCommand command = connection.CreateCommand();
                 command.CommandType = System.Data.CommandType.Text;
-                command.CommandText = "UPDATE client_table SET first_name ='" + firstNameString +
-                                        "', last_name = '" + lastNameString +
-                                        "', username = '" + usernameString +
-                                        "', password = '" + passwordString +
+                command.CommandText = "UPDATE client_table SET first_name ='" + firstName +
+                                        "', last_name = '" + lastName +
+                                        "', username = '" + username +
+                                        "', password = '" + password +
                                         "' WHERE client_id = " + idString;
                 command.ExecuteNonQuery();
                 connection.Close();
+                labelSuccessMessage(accountChangedLabel, "Profile was changed.");
             }
         }
 

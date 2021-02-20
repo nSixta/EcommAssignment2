@@ -52,5 +52,7 @@
         <br />
         <br />
         <asp:Button CssClass="confirm-button" ID="changeProfileButton" runat="server" Text="Save Changes?" OnClick="changeProfileButton_Click" />
+        <br />
+        <asp:Label ID="accountChangedLabel" runat="server" Text=""></asp:Label>
     </div>
 </asp:Content>
