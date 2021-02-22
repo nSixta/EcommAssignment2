@@ -24,6 +24,15 @@ namespace EcommAssignment2
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl mainDiv;
 
         /// <summary>
+        /// currentOrdersSection control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl currentOrdersSection;
+
+        /// <summary>
         /// DropDownList1 control.
         /// </summary>
         /// <remarks>
@@ -33,6 +42,15 @@ namespace EcommAssignment2
         protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
 
         /// <summary>
+        /// cancelButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button cancelButton;
+
+        /// <summary>
         /// ordersButton control.
         /// </summary>
         /// <remarks>
@@ -40,5 +58,14 @@ namespace EcommAssignment2
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button ordersButton;
+
+        /// <summary>
+        /// totalPriceLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label totalPriceLabel;
     }
 }
