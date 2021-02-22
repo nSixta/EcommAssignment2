@@ -78,6 +78,7 @@
     <Content Include="CSS\contactPageStyle.css" />
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
+    <Content Include="CSS\orders.css" />
     <Content Include="CSS\ProfilePageStyle.css" />
     <Content Include="CSS\SignUpPageStyle.css" />
     <Content Include="ForgotPassPage.aspx" />
@@ -109,6 +110,7 @@
     <Content Include="menu\tonkatsu.jpg" />
     <Content Include="menu\wine.jpg" />
     <Content Include="CSS\menu_page_stylesheet.css" />
+    <Content Include="orders.aspx" />
     <Content Include="ProfilePage.aspx" />
     <Content Include="SignUpPage.aspx" />
     <Content Include="Web.config" />
@@ -162,6 +164,13 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="orders.aspx.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="orders.aspx.designer.cs">
+      <DependentUpon>orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="ProfilePage.aspx.cs">
       <DependentUpon>ProfilePage.aspx</DependentUpon>

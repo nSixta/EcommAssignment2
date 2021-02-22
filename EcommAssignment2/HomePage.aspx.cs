@@ -29,13 +29,12 @@ namespace EcommAssignment2
             string lastNameString = "";
             string usernameString = "";
             string passwordString = "";
-
+            string addressString = "";
             try
             {
                 string username = usernameTextBox.Text;
                 string password = passwordTextBox.Text;
-                //string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
-                string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+                string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
                 SqlConnection connection = new SqlConnection(source);
                 connection.Open();
                 SqlCommand command = new SqlCommand("SELECT * FROM client_table WHERE username = '" + username + "' AND password = '" + password + "'", connection);
@@ -54,12 +53,17 @@ namespace EcommAssignment2
                         lastNameString = dataSet.Tables[0].Rows[0]["last_name"].ToString();
                         usernameString = dataSet.Tables[0].Rows[0]["username"].ToString();
                         passwordString = dataSet.Tables[0].Rows[0]["password"].ToString();
+                        addressString = dataSet.Tables[0].Rows[0]["address"].ToString();
                     }
-                    Session["idString"] = idString;
+                    /*Session["idString"] = idString;
                     Session["firstNameString"] = firstNameString;
                     Session["lastNameString"] = lastNameString;
+                    Session["passwordString"] = passwordString;*/
+
                     Session["usernameString"] = usernameString;
-                    Session["passwordString"] = passwordString;
+                    Session["addressString"] = addressString;
+                    Session["idString"] = idString;
+
                     Response.Redirect("MainMenu.aspx");
                 }
                 else
