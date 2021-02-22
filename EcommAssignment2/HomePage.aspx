@@ -15,7 +15,7 @@
     <form id="form1" runat="server">
         <div class="login-section">
             <div class="login-header">
-                <asp:Image ID="bulmaImage" runat="server" Height="114px" ImageUrl="/Images/bulma_image.png" Width="107px" />
+                <asp:Image ID="bulmaImage" runat="server" Height="110px" ImageUrl="/Images/bulma_image.png" Width="110px" />
                 <div class="login-header-right">
                     <p>Bulma</p>
                     <p>Fast-Food</p>
