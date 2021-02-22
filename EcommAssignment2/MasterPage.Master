@@ -8,7 +8,6 @@
     </asp:ContentPlaceHolder>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-
 </head>
 <body>
     <form id="form1" runat="server">
@@ -19,19 +18,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="MainMenu.aspx">Main Menu</a>
+                        <a class="nav-link" href="MainMenu.aspx"><i class="fa fa-home"></i>&nbsp;Main Menu</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ContactPage.aspx">Contact</a>
+                        <a class="nav-link" href="ContactPage.aspx"><i class="fa fa-address-book"></i>&nbsp;Contact</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="ProfilePage.aspx">Profile</a>
+                        <a class="nav-link" href="ProfilePage.aspx"><i class="fa fa-user"></i>Profile</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="HomePage.aspx">Log Out</a>
+                        <a class="nav-link" href="AboutPage.aspx"><i class="fa fa-info"></i>&nbsp;About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="AboutPage.aspx">About</a>
+                        <a class="nav-link" href="CartPage.aspx"><i class="fa fa-shopping-cart"></i>&nbsp;Cart</a>
+                    </li>
+                    <li class="nav-item">
+                        <div style="position:absolute; right:20px;">
+                            <a class="nav-link" href="HomePage.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out</a>
+                        </div>
                     </li>
                 </ul>
             </div>
