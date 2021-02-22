@@ -72,9 +72,7 @@
     <Content Include="App_Data\dragonball_database_log.ldf">
       <DependentUpon>dragonball_database.mdf</DependentUpon>
     </Content>
-    <Content Include="CartPage.aspx" />
     <Content Include="ContactPage.aspx" />
-    <Content Include="CSS\CartPageStyles.css" />
     <Content Include="CSS\contactPageStyle.css" />
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
@@ -109,7 +107,7 @@
     <Content Include="menu\tofu.jpg" />
     <Content Include="menu\tonkatsu.jpg" />
     <Content Include="menu\wine.jpg" />
-    <Content Include="CSS\menu_page_stylesheet.css" />
+    <Content Include="CSS\MainMenuStyle.css" />
     <Content Include="orders.aspx" />
     <Content Include="ProfilePage.aspx" />
     <Content Include="SignUpPage.aspx" />
@@ -122,13 +120,6 @@
     </Compile>
     <Compile Include="AboutPage.aspx.designer.cs">
       <DependentUpon>AboutPage.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="CartPage.aspx.cs">
-      <DependentUpon>CartPage.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="CartPage.aspx.designer.cs">
-      <DependentUpon>CartPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContactPage.aspx.cs">
       <DependentUpon>ContactPage.aspx</DependentUpon>
