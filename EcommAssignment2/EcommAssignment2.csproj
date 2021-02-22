@@ -74,6 +74,7 @@
     </Content>
     <Content Include="CartPage.aspx" />
     <Content Include="ContactPage.aspx" />
+    <Content Include="CSS\CartPageStyles.css" />
     <Content Include="CSS\contactPageStyle.css" />
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
