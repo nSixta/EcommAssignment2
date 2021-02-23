@@ -81,6 +81,19 @@ namespace EcommAssignment2
                 HtmlGenericControl br = new HtmlGenericControl("br");
                 div.Controls.Add(br);
 
+                Label nutritionalDetails = new Label();
+                nutritionalDetails.Text = "Carbs: " + dataSet.Tables[0].Rows[c]["carbs"].ToString() + "g" + "<br/>" +
+                                           "Calories: " + dataSet.Tables[0].Rows[c]["calories"].ToString() + "<br/>" +
+                                           "Caffeine: " + dataSet.Tables[0].Rows[c]["caffeine"].ToString() + "mg" + "<br/>" +
+                                           "Fiber: " + dataSet.Tables[0].Rows[c]["fiber"].ToString() + "g" + "<br/>" +
+                                           "Sugar: " + dataSet.Tables[0].Rows[c]["sugar"].ToString() + "mg" + "<br/>" +
+                                           "Sodium: " + dataSet.Tables[0].Rows[c]["sodium"].ToString() + "mg" + "<br/>" +
+                                           "Protein: " + dataSet.Tables[0].Rows[c]["protein"].ToString() + "g";
+                div.Controls.Add(nutritionalDetails);
+
+                HtmlGenericControl br1 = new HtmlGenericControl("br");
+                div.Controls.Add(br1);
+
                 //createButton  
                 Button btn = new Button();
                 btn.Text = "Add To order";
@@ -152,6 +165,10 @@ namespace EcommAssignment2
             closeConnectionDB(con);
             //overAllTotal.Text = "" + totalPayment;
         }
+        private void nutritionalBtn_Click(object sender, EventArgs e)
+        {
+
+        }
 
         private void Btn_Click(object sender, EventArgs e)
         {
@@ -184,6 +201,10 @@ namespace EcommAssignment2
             closeConnectionDB(con);
             //overAllTotal.Text = "" + totalPayment;
             totalPriceLabel.Text = "Total Price: " + total.ToString() + "$";
+            if (total >= 25.00)
+            {
+                totalPriceLabel.Text += " <- Your order is qualified for free shipping.";
+            }
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)
