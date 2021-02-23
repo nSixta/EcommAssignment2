@@ -12,7 +12,7 @@ namespace EcommAssignment2
 {
     public partial class MainMenu : System.Web.UI.Page
     {
-        
+
         string lastNameString = "";
         string firstNameString = "";
         string passwordString = "";
@@ -112,14 +112,20 @@ namespace EcommAssignment2
                 lbl.Text = temp.Tables[0].Rows[0]["name"].ToString();
                 div.Controls.Add(lbl);
 
+                HtmlGenericControl br = new HtmlGenericControl("br");
+                div.Controls.Add(br);
+
                 //quantity
                 Label quan1 = new Label();
-                quan1.Text = "Quantity:";
+                quan1.Text = "Quantity: ";
                 div.Controls.Add(quan1);
 
                 Label quan = new Label();
                 quan.Text = dataSet.Tables[0].Rows[c]["quantity"].ToString();
                 div.Controls.Add(quan);
+
+                HtmlGenericControl br1 = new HtmlGenericControl("br");
+                div.Controls.Add(br1);
 
                 //totalPrice
                 Label price1 = new Label();
@@ -185,7 +191,7 @@ namespace EcommAssignment2
             SqlConnection con = createConnectionDB();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE FROM curr_orders_table";
+            cmd.CommandText = "DELETE FROM curr_orders_table WHERE client_id = " + idString;
             cmd.ExecuteNonQuery();
             closeConnectionDB(con);
             totalPriceLabel.Text = "Total Price: " + 0 + "$";

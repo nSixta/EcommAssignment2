@@ -11,7 +11,7 @@ namespace EcommAssignment2
 {
 
 
-    public partial class HomePage
+    public partial class LoginPage
     {
 
         /// <summary>

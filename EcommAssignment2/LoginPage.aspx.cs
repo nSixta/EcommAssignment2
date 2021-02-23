@@ -10,7 +10,7 @@ using System.Web.UI.WebControls;
 
 namespace EcommAssignment2
 {
-    public partial class HomePage : System.Web.UI.Page
+    public partial class LoginPage : System.Web.UI.Page
     {
         string idString = "";
         string firstNameString = "";

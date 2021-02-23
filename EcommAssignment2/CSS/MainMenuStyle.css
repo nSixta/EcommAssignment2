@@ -86,3 +86,8 @@
         transition: all 0.4s ease 0s;
     }
 
+.oneOrderInQueue {
+    width: 30%;
+    border: 2px solid black;
+    border-radius: 5px;
+}
