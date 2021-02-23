@@ -6,7 +6,7 @@
 <head runat="server">
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 <body>
@@ -18,7 +18,10 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <a class="nav-link" href="MainMenu.aspx"><i class="fa fa-home"></i>&nbsp;Main Menu</a>
+                        <a class="nav-link" href="HomePage.aspx"><i class="fa fa-home"></i>&nbsp;Home</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="MainMenu.aspx"><i class="fa fa-home"></i>&nbsp;Menu</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="ContactPage.aspx"><i class="fa fa-address-book"></i>&nbsp;Contact</a>
@@ -33,8 +36,8 @@
                         <a class="nav-link" href="orders.aspx"><i class="fa fa-shopping-cart"></i>&nbsp;Cart</a>
                     </li>
                     <li class="nav-item">
-                        <div style="position:absolute; right:20px;">
-                            <a class="nav-link" href="HomePage.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out</a>
+                        <div style="position: absolute; right: 20px;">
+                            <a class="nav-link" href="LoginPage.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out</a>
                         </div>
                     </li>
                 </ul>
