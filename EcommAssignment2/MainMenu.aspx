@@ -2,7 +2,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Menu Menu</title>
-    <link rel="stylesheet" href="CSS/MainMenuStyle.css"/>
+    <link rel="stylesheet" href="CSS/MainMenuStyle.css" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="body-section">

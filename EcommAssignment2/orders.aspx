@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MasterPage.Master" AutoEventWireup="true" CodeBehind="orders.aspx.cs" Inherits="EcommAssignment2.orders" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="/MasterPage.Master" AutoEventWireup="true" CodeBehind="orders.aspx.cs" Inherits="EcommAssignment2.orders" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
     <link href="CSS/orders.css" rel="stylesheet" />
@@ -20,6 +20,7 @@
         </div>
         <div ID="previousOrders" class="orderCard" runat="server">
             <asp:Label ID="Label3" runat="server" Text="Previous Orders"></asp:Label>
+            <asp:Button ID="clearPreivousTable" runat="server" Text="Clear Previous Orders" OnClick="clearPreivousTable_Click" />
         </div>
     </div>
 </asp:Content>

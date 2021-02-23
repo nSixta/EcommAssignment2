@@ -17,7 +17,7 @@ namespace EcommAssignment2
         string addressString = "";
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+
             if (Session["usernameString"] == null && Session["idString"] == null)
             {
                 Response.Redirect("HomePage.aspx");
@@ -25,10 +25,9 @@ namespace EcommAssignment2
             idString = Session["idString"].ToString();
             usernameString = Session["usernameString"].ToString();
             addressString = Session["addressString"].ToString();
-
-                loadCurrentOrders();
-                loadPreviousOrders();
-                loadDeliveringOrders();
+            loadCurrentOrders();
+            loadPreviousOrders();
+            loadDeliveringOrders();
         }
 
         private void loadDeliveringOrders()
@@ -37,7 +36,7 @@ namespace EcommAssignment2
             DataSet dataSet = fillDataSet(con, "select * from delivery_table where client_id=" + idString);
             double totalPayment = 0;
 
-            if(dataSet.Tables[0].Rows.Count == 0)
+            if (dataSet.Tables[0].Rows.Count == 0)
             {
                 deliveredButton.Enabled = false;
                 deliveredButton.Visible = false;
@@ -182,7 +181,7 @@ namespace EcommAssignment2
             SqlConnection con = createConnectionDB();
             DataSet dataSet = fillDataSet(con, "select * from curr_orders_table where client_id=" + idString);
             double totalPayment = 0;
-            if(dataSet.Tables[0].Rows.Count == 0)
+            if (dataSet.Tables[0].Rows.Count == 0)
             {
                 Button1.Enabled = false;
                 Button1.Visible = false;
@@ -226,8 +225,8 @@ namespace EcommAssignment2
                 div.Controls.Add(quan1);
 
                 Label quan = new Label();
-                     quan.Text = dataSet.Tables[0].Rows[c]["quantity"].ToString();
-                     div.Controls.Add(quan);
+                quan.Text = dataSet.Tables[0].Rows[c]["quantity"].ToString();
+                div.Controls.Add(quan);
 
                 //totalPrice
                 Label price1 = new Label();
@@ -345,6 +344,17 @@ namespace EcommAssignment2
             closeConnectionDB(con);
             //reload screen
             Response.Redirect("orders.aspx", false);
+        }
+
+        protected void clearPreivousTable_Click(object sender, EventArgs e)
+        {
+            SqlConnection con = createConnectionDB();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"DELETE from prev_orders_table WHERE client_id = " + idString;
+            cmd.ExecuteNonQuery();
+            closeConnectionDB(con);
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
     }
 }
