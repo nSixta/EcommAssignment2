@@ -1,77 +1,51 @@
 ﻿
-body {
-    background: url(../Images/kami_house.jpg) no-repeat center center fixed;
-    background-size: cover;
+.body-section {
+    margin: auto;
+    width: 70%;
+    border-radius: 5px;
+    background-color: #F3F3F3;
+}
+
+.card-section {
+    display: inline-flex;
+    padding: 10px;
+}
+
+.card {
+    margin: auto;
+    width: 30%;
     height: auto;
-    font-family: Impact;
+    background-color: white;
+    border: 1px solid black;
 }
 
-.background-section {
-    float: left;
-    width: 80%;
-    height: 100%;
+h4{
+    text-align: center;
 }
 
-.login-section {
-    text-align: right;
-    float: right;
-    width: 20%;
-    height: 100vh;
-    padding-right: 30px;
-    background-color: rgba(255,255,255,0.85);
-}
-
-.login-header {
-    display: flex;
-    padding-left: 30px;
-    text-align: left;
-}
-
-.login-header-right {
-    font-size: 35px;
-}
-
-.input-label {
-    text-align: left;
-    padding-left: 50px;
-}
-
-.input {
-    font-family: 'Times New Roman', Times, serif;
+.cardImage {
+    margin: auto;
     width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-    margin-top: 6px;
-    margin-bottom: 16px;
-    resize: vertical;
+    height: 200px;
+    border: 1px solid black;
 }
 
-    .input[type=submit] {
-        background-color: #4CAF50;
-        color: white;
-        padding: 12px 10px;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-.button {
+.card-button {
     color: #fff !important;
     text-transform: uppercase;
     text-decoration: none;
-    background: #60a3bc;
+    background: #F85B1A;
+    text-align: center;
     padding: 10px;
+    float: left;
     border-radius: 25px;
-    display: inline-block;
-    float: right;
     transition: all 0.4s ease 0s;
 }
 
-    .button:hover {
-        text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
-        -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-        -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
-        transition: all 0.4s ease 0s;
-    }
+.card-button:hover {
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    -moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+    transition: all 0.4s ease 0s;
+}
+

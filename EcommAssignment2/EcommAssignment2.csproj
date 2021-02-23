@@ -73,14 +73,19 @@
       <DependentUpon>dragonball_database.mdf</DependentUpon>
     </Content>
     <Content Include="ContactPage.aspx" />
-    <Content Include="CSS\contactPageStyle.css" />
+    <Content Include="CSS\ContactPageStyle.css" />
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
+    <Content Include="CSS\LoginPageStyle.css" />
     <Content Include="CSS\orders.css" />
     <Content Include="CSS\ProfilePageStyle.css" />
     <Content Include="CSS\SignUpPageStyle.css" />
     <Content Include="ForgotPassPage.aspx" />
     <Content Include="HomePage.aspx" />
+    <Content Include="Images\contact_us.jpg" />
+    <Content Include="Images\krillin_food.jpg" />
+    <Content Include="Images\learn_more.jpg" />
+    <Content Include="LoginPage.aspx" />
     <Content Include="Images\bulma_image.png" />
     <Content Include="Images\goku_beerus.jpg" />
     <Content Include="Images\goku_family.jpg" />
@@ -141,6 +146,13 @@
     </Compile>
     <Compile Include="HomePage.aspx.designer.cs">
       <DependentUpon>HomePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginPage.aspx.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginPage.aspx.designer.cs">
+      <DependentUpon>LoginPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="MainMenu.aspx.cs">
       <DependentUpon>MainMenu.aspx</DependentUpon>

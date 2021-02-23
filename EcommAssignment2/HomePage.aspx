@@ -1,49 +1,68 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="EcommAssignment2.HomePage" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="/MasterPage.Master" AutoEventWireup="true" CodeBehind="HomePage.aspx.cs" Inherits="EcommAssignment2.HomePage1" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Home Page</title>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
-    <link rel="stylesheet" href="CSS/HomePageStyle.css" />
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div class="login-section">
-            <div class="login-header">
-                <asp:Image ID="bulmaImage" runat="server" Height="110px" ImageUrl="/Images/bulma_image.png" Width="110px" />
-                <div class="login-header-right">
-                    <p>Bulma</p>
-                    <p>Fast-Food</p>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <title>House</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link href="CSS/HomePageStyle.css" rel="stylesheet" />
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <div class="body-section">
+        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img class="d-block w-100" src="Images/goku_family.jpg" alt="First slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>A Place Where The Whole Family Can Enjoy</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="Images/mai_pilaf_shu.jpg" alt="Second slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Anyone Can Find Something To Enjoy</h1>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img class="d-block w-100" src="Images/goku_beerus.jpg" alt="Third slide">
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Even The Gods Recommend Our Resturants</h1>
+                    </div>
                 </div>
             </div>
-            <br />
-            <p>First Time Here? Sign Up Now!</p>
-            <asp:Button CssClass="button" ID="signUpButton" runat="server" Text="Sign Up!" OnClick="signUpButton_Click" />
-            <br />
-            <br />
-            <p class="input-label"><i class="fa fa-user"></i>Username</p>
-            <asp:TextBox CssClass="input" ID="usernameTextBox" runat="server" Width="300px"></asp:TextBox>
-            <asp:Label ID="usernameLabel" runat="server" Text=""></asp:Label>
-            <br />
-            <br />
-            <p class="input-label"><i class="fa fa-key"></i>Password</p>
-            <asp:TextBox CssClass="input" ID="passwordTextBox" runat="server" Width="300px"></asp:TextBox>
-            <asp:Label ID="passwordLabel" runat="server" Text=""></asp:Label>
-            <br />
-            <br />
-            <asp:Button CssClass="button" ID="signInButton" runat="server" Text="Sign In" OnClick="signInButton_Click" />
-            <br />
-            <br />
-            <asp:LinkButton ID="forgotPassLink" runat="server" OnClick="forgotPassLink_Click">Forgot Password</asp:LinkButton>
+            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    </form>
-</body>
-</html>
+        <div class="card-section">
+            <div class="card">
+                <h4>A Menu Filled with Delicious Foods</h4>
+                <asp:Image ID="firstCardImage" runat="server" CssClass="cardImage" ImageUrl="/Images/krillin_food.jpg" /><br />
+                <a class="card-button" href="MainMenu.aspx">Go See The Menu</a>
+            </div>
+
+            <div class="card">
+                <h4>Contact Us!</h4>
+                <asp:Image ID="secondCardImage" runat="server" CssClass="cardImage" ImageUrl="/Images/contact_us.jpg" /><br />
+                <a class="card-button" href="ContactPage.aspx">Contact Us!</a>
+            </div>
+
+            <div class="card">
+                <h4>Learn more about us!</h4>
+                <asp:Image ID="thirdCardImage" runat="server" CssClass="cardImage" ImageUrl="/Images/learn_more.jpg" /><br />
+                <a class="card-button" href="AboutPage.aspx">Learn About Us!</a>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+</asp:Content>

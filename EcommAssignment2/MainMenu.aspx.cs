@@ -12,21 +12,21 @@ namespace EcommAssignment2
 {
     public partial class MainMenu : System.Web.UI.Page
     {
-        /*
+        
         string lastNameString = "";
         string firstNameString = "";
-        string passwordString = "";*/
+        string passwordString = "";
         string idString = "";
         string usernameString = "";
         string addressString = "";
         TextBox[] temp;
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*idString = Session["idString"].ToString();
+            idString = Session["idString"].ToString();
             lastNameString = Session["lastNameString"].ToString();
             usernameString = Session["usernameString"].ToString();
             passwordString = Session["passwordString"].ToString();
-            System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);*/
+            System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
 
             if (Session["usernameString"] == null && Session["idString"] == null)
             {
@@ -36,7 +36,6 @@ namespace EcommAssignment2
             usernameString = Session["usernameString"].ToString();
             addressString = Session["addressString"].ToString();
             loadCards();
-            //loadCurrentOrders();
         }
 
         private void loadCards()
