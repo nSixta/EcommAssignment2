@@ -7,12 +7,12 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="body-section">
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
+        <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            </div>
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="Images/goku_family.jpg" alt="First slide">
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="carousel-item">
-                    <img class="d-block w-100" src="Images/mai_pilaf_shu.jpg" alt="Second slide">
+                    <img class="d-block w-100" src="Images/goku_eating.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
                         <h1>Anyone Can Find Something To Enjoy</h1>
                     </div>
@@ -33,32 +33,35 @@
                     </div>
                 </div>
             </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="sr-only">Next</span>
-            </a>
+                <span class="visually-hidden">Next</span>
+            </button>
         </div>
         <div class="card-section">
-            <div class="card">
-                <h4>A Menu Filled with Delicious Foods</h4>
-                <asp:Image ID="firstCardImage" runat="server" CssClass="cardImage" ImageUrl="/Images/krillin_food.jpg" /><br />
-                <a class="card-button" href="MainMenu.aspx">Go See The Menu</a>
+            <div class="card1">
+                <asp:Image runat="server" CssClass="cardImage1" ImageUrl="/Images/krillin_food.jpg" />
+                <h3>Check Out Our Wide Variety of Foods</h3>
+                <p>Bulma Fast Food's menu is filled with options that come from all over the world. Check out our option and find something that is right for you.</p>
+                <a class="card-button" href="MainMenu.aspx">Go to Menu</a>
             </div>
-
-            <div class="card">
-                <h4>Contact Us!</h4>
-                <asp:Image ID="secondCardImage" runat="server" CssClass="cardImage" ImageUrl="/Images/contact_us.jpg" /><br />
-                <a class="card-button" href="ContactPage.aspx">Contact Us!</a>
+            <br />
+            <div class="card2">
+                <asp:Image runat="server" CssClass="cardImage2" ImageUrl="/Images/contact_us.jpg" />
+                <h3>Contact Us!</h3>
+                <p>We always want to hear feedback from our clients so that we can improve our services.</p>
+                <a class="card-button" href="ContactPage.aspx">Contact Us</a>
             </div>
-
-            <div class="card">
-                <h4>Learn more about us!</h4>
-                <asp:Image ID="thirdCardImage" runat="server" CssClass="cardImage" ImageUrl="/Images/learn_more.jpg" /><br />
-                <a class="card-button" href="AboutPage.aspx">Learn About Us!</a>
+            <br />
+            <div class="card3">
+                <asp:Image runat="server" CssClass="cardImage3" ImageUrl="/Images/learn_more.jpg" />
+                <h3>Learn More About Us!</h3>
+                <p>If you are not so familier with Bulma Fast Food, check out our newsletter to get a firm grasp of who we are.</p>
+                <a class="card-button" href="AboutPage.aspx">Learn More</a>
             </div>
         </div>
     </div>

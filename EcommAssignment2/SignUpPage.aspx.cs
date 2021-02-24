@@ -265,7 +265,7 @@ namespace EcommAssignment2
 
         protected void backToHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("LoginPage.aspx");
         }
 
         public void labelErrorMessage(Label label, string text)

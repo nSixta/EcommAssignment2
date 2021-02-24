@@ -30,7 +30,7 @@ namespace EcommAssignment2
 
             if (Session["usernameString"] == null && Session["idString"] == null)
             {
-                Response.Redirect("HomePage.aspx");
+                Response.Redirect("LoginPage.aspx");
             }
             idString = Session["idString"].ToString();
             usernameString = Session["usernameString"].ToString();
@@ -201,10 +201,7 @@ namespace EcommAssignment2
             closeConnectionDB(con);
             //overAllTotal.Text = "" + totalPayment;
             totalPriceLabel.Text = "Total Price: " + total.ToString() + "$";
-            if (total >= 25.00)
-            {
-                totalPriceLabel.Text += " <- Your order is qualified for free shipping.";
-            }
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
         protected void cancelButton_Click(object sender, EventArgs e)

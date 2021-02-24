@@ -87,7 +87,7 @@ namespace EcommAssignment2
 
         protected void goBackToHome_Click(object sender, EventArgs e)
         {
-            Response.Redirect("HomePage.aspx");
+            Response.Redirect("LoginPage.aspx");
         }
     }
 }

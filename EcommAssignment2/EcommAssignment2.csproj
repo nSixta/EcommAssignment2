@@ -83,6 +83,7 @@
     <Content Include="ForgotPassPage.aspx" />
     <Content Include="HomePage.aspx" />
     <Content Include="Images\contact_us.jpg" />
+    <Content Include="Images\goku_eating.jpg" />
     <Content Include="Images\krillin_food.jpg" />
     <Content Include="Images\learn_more.jpg" />
     <Content Include="LoginPage.aspx" />
@@ -90,7 +91,6 @@
     <Content Include="Images\goku_beerus.jpg" />
     <Content Include="Images\goku_family.jpg" />
     <Content Include="Images\kami_house.jpg" />
-    <Content Include="Images\mai_pilaf_shu.jpg" />
     <Content Include="MainMenu.aspx" />
     <Content Include="menu\applejuice.jpg" />
     <Content Include="menu\beer.jpg" />
