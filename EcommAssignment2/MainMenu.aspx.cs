@@ -36,6 +36,7 @@ namespace EcommAssignment2
             usernameString = Session["usernameString"].ToString();
             addressString = Session["addressString"].ToString();
             loadCards();
+            loadCurrentOrders();
         }
 
         private void loadCards()

@@ -189,11 +189,18 @@ namespace EcommAssignment2
                 Label1.Visible = false;
             }
 
+            HtmlGenericControl br1 = new HtmlGenericControl("br");
+            HtmlGenericControl br2 = new HtmlGenericControl("br");
+            HtmlGenericControl br3 = new HtmlGenericControl("br");
+            HtmlGenericControl br4 = new HtmlGenericControl("br");
+            HtmlGenericControl br5 = new HtmlGenericControl("br");
+
             for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
             {
                 //createDiv
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.Attributes.Add("class", "orders");
+
 
                 //menu_name
                 DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
@@ -201,43 +208,50 @@ namespace EcommAssignment2
                 lbl.Text = temp.Tables[0].Rows[0]["name"].ToString();
                 div.Controls.Add(lbl);
 
+                div.Controls.Add(br1);
+
+                /*Image image = new Image();
+                image.ImageUrl = dataSet.Tables[0].Rows[c]["photo"].ToString();
+                image.Width = 50;
+                image.Height = 50;
+                div.Controls.Add(image);*/
+
                 //delivery_date
                 Label dd1 = new Label();
-                dd1.Text = "Delivery Date:";
+                dd1.Text = "Delivery Date: " + dataSet.Tables[0].Rows[c]["delivery_date"].ToString();
                 div.Controls.Add(dd1);
 
-                Label dd = new Label();
-                dd.Text = dataSet.Tables[0].Rows[c]["delivery_date"].ToString();
-                div.Controls.Add(dd);
+                div.Controls.Add(br2);
+
                 //store_Address
+                DataSet temp2 = fillDataSet(con, "select * from store_table where store_id=" + dataSet.Tables[0].Rows[c]["store_id"]);
                 Label str1 = new Label();
-                str1.Text = "Store Address:";
+                str1.Text = "Store Address: " + temp2.Tables[0].Rows[0]["address"].ToString();
                 div.Controls.Add(str1);
 
-                DataSet temp2 = fillDataSet(con, "select * from store_table where store_id=" + dataSet.Tables[0].Rows[c]["store_id"]);
+                div.Controls.Add(br3);
 
-                Label str = new Label();
-                str.Text = temp2.Tables[0].Rows[0]["address"].ToString();
-                div.Controls.Add(str);
                 //quantity
                 Label quan1 = new Label();
-                quan1.Text = "Quantity:";
+                quan1.Text = "Quantity: " + dataSet.Tables[0].Rows[c]["quantity"].ToString();
                 div.Controls.Add(quan1);
 
-                Label quan = new Label();
-                quan.Text = dataSet.Tables[0].Rows[c]["quantity"].ToString();
-                div.Controls.Add(quan);
+                div.Controls.Add(br4);
 
                 //totalPrice
-                Label price1 = new Label();
-                price1.Text = "Total:";
-                div.Controls.Add(price1);
-
                 double priceTemp = double.Parse(temp.Tables[0].Rows[0]["price"].ToString()) * int.Parse(dataSet.Tables[0].Rows[c]["quantity"].ToString());
-                Label price = new Label();
-                price.Text = "" + priceTemp;
+                Label price1 = new Label();
+                price1.Text = "Total: " + "$" + priceTemp;
+                div.Controls.Add(price1);
                 totalPayment += priceTemp;
-                div.Controls.Add(price);
+
+                div.Controls.Add(br5);
+
+                Button deleteButton = new Button();
+                deleteButton.Attributes.Add("idValue", dataSet.Tables[0].Rows[c]["menu_id"].ToString());
+                deleteButton.Text = "Delete";
+                deleteButton.Click += deleteButton_Click;
+                div.Controls.Add(deleteButton);
 
                 //TODO put this in the being delivered
                 /*//Btn
@@ -252,6 +266,18 @@ namespace EcommAssignment2
             }
             closeConnectionDB(con);
             overAllTotal.Text = "" + totalPayment;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            //TODO delete the correct row
+            /*SqlConnection con = createConnectionDB();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"DELETE FROM curr_orders_table WHERE menu_id = " + (sender as Button).Attributes["idValue"].ToString() + " AND client_id = " + idString;
+            cmd.ExecuteNonQuery();
+            closeConnectionDB(con);
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);*/
         }
 
         private void itemsDelivered(object sender, EventArgs e)
