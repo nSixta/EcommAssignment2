@@ -17,7 +17,6 @@ namespace EcommAssignment2
         string passwordString = "";
         string idString = "";
         string usernameString = "";
-        string addressString = "";
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["usernameString"] == null && Session["idString"] == null)
@@ -28,9 +27,8 @@ namespace EcommAssignment2
             lastNameString = Session["lastNameString"].ToString();
             usernameString = Session["usernameString"].ToString();
             passwordString = Session["passwordString"].ToString();
-            addressString = Session["addressString"].ToString();
             System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
-            Response.Write(Session["currentTab"] == null? "null": Session["currentTab"].ToString());
+            //Response.Write(Session["currentTab"] == null? "null": Session["currentTab"].ToString());
             if (Session["currentTab"] == null || Session["currentTab"].ToString().Equals("current"))
             {
                 currentOrders.Style.Add("display", "block");
@@ -64,6 +62,97 @@ namespace EcommAssignment2
             loadCurrentOrders();
             loadDeliveringOrders();
             loadPreviousOrders();
+        }
+        private void loadCurrentOrders()
+        {
+            SqlConnection con = createConnectionDB();
+            DataSet dataSet = fillDataSet(con, "select * from cart_table where client_id=" + idString);
+            double totalPayment = 0;
+
+            for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
+            {
+                DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
+                //version4*******
+                HtmlGenericControl div = new HtmlGenericControl("div");
+                div.Attributes.Add("class", "anOrder");
+                //twoDivs for label and value
+
+
+                HtmlGenericControl divLeft = new HtmlGenericControl("div");
+                divLeft.Attributes.Add("class", "divLeft");
+
+                HtmlGenericControl divName = new HtmlGenericControl("div");
+                divName.Attributes.Add("class", "oneOrderDiv");
+
+                //image
+                Image img = new Image();
+                img.ImageUrl = temp.Tables[0].Rows[0]["photo"].ToString();
+                img.Height = 50;
+                img.Width = 50;
+                divName.Controls.Add(img);
+
+                HtmlGenericControl lbl = new HtmlGenericControl("h4");
+                lbl.InnerHtml = temp.Tables[0].Rows[0]["name"].ToString();
+                divName.Controls.Add(lbl);
+
+                divLeft.Controls.Add(divName);
+
+
+                //quantity
+
+                HtmlGenericControl divQuan = new HtmlGenericControl("div");
+                divQuan.Attributes.Add("class", "oneOrderDiv");
+
+                HtmlGenericControl quan1 = new HtmlGenericControl("h6");
+                quan1.InnerHtml = "Quantity: ";
+                divQuan.Controls.Add(quan1);
+
+                HtmlGenericControl quan = new HtmlGenericControl("p");
+                quan.InnerHtml = dataSet.Tables[0].Rows[c]["quantity"].ToString();
+                divQuan.Controls.Add(quan);
+                divLeft.Controls.Add(divQuan);
+
+                //totalPrice
+
+                HtmlGenericControl divTotal = new HtmlGenericControl("div");
+                divTotal.Attributes.Add("class", "oneOrderDiv");
+
+                HtmlGenericControl price1 = new HtmlGenericControl("h6");
+                price1.InnerHtml = "Price:";
+                divTotal.Controls.Add(price1);
+
+                double priceTemp = double.Parse(temp.Tables[0].Rows[0]["price"].ToString()) * int.Parse(dataSet.Tables[0].Rows[c]["quantity"].ToString());
+                HtmlGenericControl price = new HtmlGenericControl("p");
+                price.InnerHtml = "$" + priceTemp.ToString();
+                totalPayment += priceTemp;
+                divTotal.Controls.Add(price);
+                divLeft.Controls.Add(divTotal);
+
+
+                Button deleteItem = new Button();
+                deleteItem.Text = "Remove Item";
+                deleteItem.Attributes.Add("class", "btn btn-danger");
+                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["cart_id"].ToString());
+                deleteItem.Click += removeItem;
+                divLeft.Controls.Add(deleteItem);
+
+                currentOrders.Controls.Add(divLeft);
+
+            }
+            closeConnectionDB(con);
+
+            HtmlGenericControl totalPriceDiv = new HtmlGenericControl("div");
+            HtmlGenericControl totalPrice = new HtmlGenericControl("h3");
+            totalPrice.InnerHtml = "$" + totalPayment;
+            totalPriceDiv.Attributes.Add("class", "totalPayment");
+            totalPriceDiv.Controls.Add(totalPrice);
+            currentOrders.Controls.Add(totalPriceDiv);
+
+            Button payItems = new Button();
+            payItems.Text = "Proceed to Checkout";
+            payItems.Attributes.Add("class", "btn btn-success");
+            payItems.Click += payAllItems;
+            currentOrders.Controls.Add(payItems);
         }
 
         private void loadPreviousOrders()
@@ -166,7 +255,7 @@ namespace EcommAssignment2
         private void loadDeliveringOrders()
         {
             SqlConnection con = createConnectionDB();
-            DataSet dataSet = fillDataSet(con, "select * from delivery_table where client_id=" + idString);
+            DataSet dataSet = fillDataSet(con, "select * from order_table where client_id=" + idString);
             double totalPayment = 0;
 
             for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
@@ -232,7 +321,7 @@ namespace EcommAssignment2
                 Button deleteItem = new Button();
                 deleteItem.Text = "Confirm If Delivered";
                 deleteItem.Attributes.Add("class", "btn btn-success");
-                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["delivery_id"].ToString());
+                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["order_id"].ToString());
                 deleteItem.Click += deliveredItem;
                 divLeft.Controls.Add(deleteItem);
 
@@ -252,23 +341,24 @@ namespace EcommAssignment2
         private void deliveredItem(object sender, EventArgs e)
         {
             SqlConnection con = createConnectionDB();
-            DataSet dataSet = fillDataSet(con, "select * from delivery_table where delivery_id=" + (sender as Button).Attributes["itemId"]);
+            DataSet dataSet = fillDataSet(con, "select * from order_table where order_id=" + (sender as Button).Attributes["itemId"]);
             //insert to previous_table
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"insert into prev_orders_table values(@client_id, @menu_id, @delivery_date, @delivery_address, @store_id, @quantity)";
+            cmd.CommandText = $"INSERT INTO prev_orders_table VALUES(@client_id, @menu_id, @quantity, @client_name, @delivery_date, @delivery_address, @postal_code)";
             cmd.Parameters.AddWithValue("client_id", idString);
             cmd.Parameters.AddWithValue("menu_id", dataSet.Tables[0].Rows[0]["menu_id"]);
+            cmd.Parameters.AddWithValue("quantity", dataSet.Tables[0].Rows[0]["quantity"]);
+            cmd.Parameters.AddWithValue("client_name", dataSet.Tables[0].Rows[0]["client_name"]);
             cmd.Parameters.AddWithValue("delivery_date", dataSet.Tables[0].Rows[0]["delivery_date"]);
             cmd.Parameters.AddWithValue("delivery_address", dataSet.Tables[0].Rows[0]["delivery_address"]);
-            cmd.Parameters.AddWithValue("store_id", dataSet.Tables[0].Rows[0]["store_id"]);
-            cmd.Parameters.AddWithValue("quantity", dataSet.Tables[0].Rows[0]["quantity"]);
+            cmd.Parameters.AddWithValue("postal_code", dataSet.Tables[0].Rows[0]["postal_code"]);
             cmd.ExecuteNonQuery();
 
             //delete from delivery_table
             SqlCommand cmd2 = con.CreateCommand();
             cmd2.CommandType = CommandType.Text;
-            cmd2.CommandText = $"DELETE FROM delivery_table WHERE delivery_id = " + (sender as Button).Attributes["itemId"];
+            cmd2.CommandText = $"DELETE FROM order_table WHERE order_id = " + (sender as Button).Attributes["itemId"];
             cmd2.ExecuteNonQuery();
             closeConnectionDB(con);
             Session["currentTab"] = "delivery";
@@ -276,125 +366,29 @@ namespace EcommAssignment2
             Response.Redirect("orders_cart.aspx", false);
         }
 
-        private void loadCurrentOrders()
-        {
-            SqlConnection con = createConnectionDB();
-            DataSet dataSet = fillDataSet(con, "select * from curr_orders_table where client_id=" + idString);
-            double totalPayment = 0;
-
-            for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
-            {
-
-                DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
-                //version4*******
-                HtmlGenericControl div = new HtmlGenericControl("div");
-                div.Attributes.Add("class", "anOrder");
-                //twoDivs for label and value
-
-
-                HtmlGenericControl divLeft = new HtmlGenericControl("div");
-                divLeft.Attributes.Add("class", "divLeft");
-
-                HtmlGenericControl divName = new HtmlGenericControl("div");
-                divName.Attributes.Add("class", "oneOrderDiv");
-
-                //image
-                Image img = new Image();
-                img.ImageUrl = temp.Tables[0].Rows[0]["photo"].ToString();
-                img.Height = 50;
-                img.Width = 50;
-                divName.Controls.Add(img);
-
-                HtmlGenericControl lbl = new HtmlGenericControl("h4");
-                lbl.InnerHtml = temp.Tables[0].Rows[0]["name"].ToString();
-                divName.Controls.Add(lbl);
-
-                divLeft.Controls.Add(divName);
-
-
-                //quantity
-
-                HtmlGenericControl divQuan = new HtmlGenericControl("div");
-                divQuan.Attributes.Add("class", "oneOrderDiv");
-
-                HtmlGenericControl quan1 = new HtmlGenericControl("h6");
-                quan1.InnerHtml = "Quantity: ";
-                divQuan.Controls.Add(quan1);
-
-                HtmlGenericControl quan = new HtmlGenericControl("p");
-                quan.InnerHtml = dataSet.Tables[0].Rows[c]["quantity"].ToString();
-                divQuan.Controls.Add(quan);
-                divLeft.Controls.Add(divQuan);
-
-                //totalPrice
-
-                HtmlGenericControl divTotal = new HtmlGenericControl("div");
-                divTotal.Attributes.Add("class", "oneOrderDiv");
-
-                HtmlGenericControl price1 = new HtmlGenericControl("h6");
-                price1.InnerHtml = "Price:";
-                divTotal.Controls.Add(price1);
-
-                double priceTemp = double.Parse(temp.Tables[0].Rows[0]["price"].ToString()) * int.Parse(dataSet.Tables[0].Rows[c]["quantity"].ToString());
-                HtmlGenericControl price = new HtmlGenericControl("p");
-                price.InnerHtml = "$" + priceTemp.ToString();
-                totalPayment += priceTemp;
-                divTotal.Controls.Add(price);
-                divLeft.Controls.Add(divTotal);
-
-
-                Button deleteItem = new Button();
-                deleteItem.Text = "Remove Item";
-                deleteItem.Attributes.Add("class", "btn btn-danger");
-                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["current_id"].ToString());
-                deleteItem.Click += removeItem;
-                divLeft.Controls.Add(deleteItem);
-
-                currentOrders.Controls.Add(divLeft);
-
-            }
-            closeConnectionDB(con);
-
-            HtmlGenericControl totalPriceDiv = new HtmlGenericControl("div");
-            HtmlGenericControl totalPrice = new HtmlGenericControl("h3");
-            totalPrice.InnerHtml = "$" + totalPayment;
-            totalPriceDiv.Attributes.Add("class", "totalPayment");
-            totalPriceDiv.Controls.Add(totalPrice);
-            currentOrders.Controls.Add(totalPriceDiv);
-
-            Button payItems = new Button();
-            payItems.Text = "Pay Everything";
-            payItems.Attributes.Add("class", "btn btn-success");
-            payItems.Click += payAllItems;
-            currentOrders.Controls.Add(payItems);
-        }
-
         private void payAllItems(object sender, EventArgs e)
         {
-            SqlConnection con = createConnectionDB();
-            DataSet dataSet = fillDataSet(con, "select * from curr_orders_table where client_id=" + idString);
+            /*SqlConnection con = createConnectionDB();
+            DataSet dataSet = fillDataSet(con, "select * from cart_table where client_id=" + idString);
             for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
             {
                 SqlCommand cmd = con.CreateCommand();
                 cmd.CommandType = CommandType.Text;
-                cmd.CommandText = $"insert into delivery_table values(@client_id, @menu_id, @delivery_date, @delivery_address, @store_id, @quantity)";
+                cmd.CommandText = $"INSERT INTO order_table values(@client_id, @menu_id, @quantity)";
                 cmd.Parameters.AddWithValue("client_id", idString);
                 cmd.Parameters.AddWithValue("menu_id", dataSet.Tables[0].Rows[c]["menu_id"]);
-                cmd.Parameters.AddWithValue("delivery_date", dataSet.Tables[0].Rows[c]["delivery_date"]);
-                cmd.Parameters.AddWithValue("delivery_address", dataSet.Tables[0].Rows[c]["delivery_address"]);
-                cmd.Parameters.AddWithValue("store_id", dataSet.Tables[0].Rows[c]["store_id"]);
                 cmd.Parameters.AddWithValue("quantity", dataSet.Tables[0].Rows[c]["quantity"]);
                 cmd.ExecuteNonQuery();
             }
-            //remove from curr_orders_table
+            //remove from cart_table
             SqlCommand cmd2 = con.CreateCommand();
             cmd2.CommandType = CommandType.Text;
-            cmd2.CommandText = $"DELETE from curr_orders_table";
+            cmd2.CommandText = $"DELETE from cart_table";
             cmd2.ExecuteNonQuery();
             closeConnectionDB(con);
             //reload screen
-            Session["currentTab"] = "current";
-            Response.Redirect("orders_cart.aspx", false);
+            Session["currentTab"] = "current";*/
+            Response.Redirect("CheckoutPage.aspx");
         }
 
         private void removeItem(object sender, EventArgs e)
@@ -402,7 +396,7 @@ namespace EcommAssignment2
             SqlConnection con = createConnectionDB();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"DELETE FROM curr_orders_table WHERE current_id = " + (sender as Button).Attributes["itemId"];
+            cmd.CommandText = $"DELETE FROM cart_table WHERE cart_id = " + (sender as Button).Attributes["itemId"];
             cmd.ExecuteNonQuery();
             closeConnectionDB(con);
             Session["currentTab"] = "current";
@@ -411,8 +405,8 @@ namespace EcommAssignment2
         private SqlConnection createConnectionDB()
         {
 
-            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
-            //string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            //string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
             return con;
@@ -445,7 +439,7 @@ namespace EcommAssignment2
             ButtonCurr.Attributes.Add("class", "btn btn-dark");
             ButtonDel.Attributes.Add("class", "btn btn-outline-secondary");
             ButtonPrev.Attributes.Add("class", "btn btn-outline-secondary");
-        }   
+        }
 
         protected void ButtonDel_Click(object sender, EventArgs e)
         {
@@ -475,7 +469,5 @@ namespace EcommAssignment2
             ButtonDel.Attributes.Remove("class");
             ButtonPrev.Attributes.Remove("class");
         }
-
-    
     }
 }

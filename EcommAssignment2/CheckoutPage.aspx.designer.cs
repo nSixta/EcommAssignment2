@@ -11,106 +11,115 @@ namespace EcommAssignment2
 {
 
 
-    public partial class orders
+    public partial class CheckoutPage
     {
 
         /// <summary>
-        /// currentOrders control.
+        /// form1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl currentOrders;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// currentOrdersLabel control.
+        /// nameCheckOutText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label currentOrdersLabel;
+        protected global::System.Web.UI.WebControls.TextBox nameCheckOutText;
 
         /// <summary>
-        /// Label1 control.
+        /// addressCheckOutText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.TextBox addressCheckOutText;
 
         /// <summary>
-        /// overAllTotal control.
+        /// cityCheckOutText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label overAllTotal;
+        protected global::System.Web.UI.WebControls.TextBox cityCheckOutText;
 
         /// <summary>
-        /// Button1 control.
+        /// postalCodeText control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.TextBox postalCodeText;
 
         /// <summary>
-        /// deliveryOrders control.
+        /// checkOutCartNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl deliveryOrders;
+        protected global::System.Web.UI.WebControls.Label checkOutCartNumber;
 
         /// <summary>
-        /// Label2 control.
+        /// itemCheckOutList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl itemCheckOutList;
 
         /// <summary>
-        /// deliveredButton control.
+        /// subtotalLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button deliveredButton;
+        protected global::System.Web.UI.WebControls.Label subtotalLabel;
 
         /// <summary>
-        /// previousOrders control.
+        /// taxesLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl previousOrders;
+        protected global::System.Web.UI.WebControls.Label taxesLabel;
 
         /// <summary>
-        /// Label3 control.
+        /// shippingCostLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label3;
+        protected global::System.Web.UI.WebControls.Label shippingCostLabel;
 
         /// <summary>
-        /// clearPreivousTable control.
+        /// checkOutPriceLabel control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button clearPreivousTable;
+        protected global::System.Web.UI.WebControls.Label checkOutPriceLabel;
+
+        /// <summary>
+        /// payCheckOutButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button payCheckOutButton;
     }
 }

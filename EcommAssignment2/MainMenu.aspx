@@ -12,15 +12,9 @@
         <div id="currentOrdersSection" class="current-orders-section" runat="server">
             <h4 class="titles">Current Orders</h4>
             <div class="currentOrderDivider">
-                <asp:DropDownList ID="DropDownList1" runat="server">
-                    <asp:ListItem Value="1" class="titles">Restaurant1</asp:ListItem>
-                    <asp:ListItem Value="2" class="titles">Restaurant2</asp:ListItem>
-                    <asp:ListItem Value="3" class="titles">Restaurant3</asp:ListItem>
-                </asp:DropDownList>
                 <asp:Button ID="cancelButton" class="btn btn-danger buttonText" runat="server" Text="Cancel" OnClick="cancelButton_Click" />
                 <asp:Button ID="ordersButton" class="btn btn-success buttonText" runat="server" Text="Place Order" OnClick="ordersButton_Click" />
             </div>
-
         </div>
     </div>
 </asp:Content>
