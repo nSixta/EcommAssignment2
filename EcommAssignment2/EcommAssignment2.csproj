@@ -72,7 +72,9 @@
     <Content Include="App_Data\dragonball_database_log.ldf">
       <DependentUpon>dragonball_database.mdf</DependentUpon>
     </Content>
+    <Content Include="CheckoutPage.aspx" />
     <Content Include="ContactPage.aspx" />
+    <Content Include="CSS\CheckoutPageStyle.css" />
     <Content Include="CSS\ContactPageStyle.css" />
     <Content Include="CSS\ForgotPassPageStyle.css" />
     <Content Include="CSS\HomePageStyle.css" />
@@ -114,7 +116,6 @@
     <Content Include="menu\tonkatsu.jpg" />
     <Content Include="menu\wine.jpg" />
     <Content Include="CSS\MainMenuStyle.css" />
-    <Content Include="orders.aspx" />
     <Content Include="orders_cart.aspx" />
     <Content Include="ProfilePage.aspx" />
     <Content Include="SignUpPage.aspx" />
@@ -127,6 +128,13 @@
     </Compile>
     <Compile Include="AboutPage.aspx.designer.cs">
       <DependentUpon>AboutPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CheckoutPage.aspx.cs">
+      <DependentUpon>CheckoutPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CheckoutPage.aspx.designer.cs">
+      <DependentUpon>CheckoutPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ContactPage.aspx.cs">
       <DependentUpon>ContactPage.aspx</DependentUpon>
@@ -169,13 +177,6 @@
     </Compile>
     <Compile Include="MasterPage.Master.designer.cs">
       <DependentUpon>MasterPage.Master</DependentUpon>
-    </Compile>
-    <Compile Include="orders.aspx.cs">
-      <DependentUpon>orders.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="orders.aspx.designer.cs">
-      <DependentUpon>orders.aspx</DependentUpon>
     </Compile>
     <Compile Include="orders_cart.aspx.cs">
       <DependentUpon>orders_cart.aspx</DependentUpon>

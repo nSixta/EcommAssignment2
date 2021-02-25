@@ -12,7 +12,6 @@ namespace EcommAssignment2
 {
     public partial class MainMenu : System.Web.UI.Page
     {
-
         string lastNameString = "";
         string firstNameString = "";
         string passwordString = "";
@@ -32,10 +31,6 @@ namespace EcommAssignment2
             passwordString = Session["passwordString"].ToString();
             addressString = Session["addressString"].ToString();
             System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
-
-            
-            /*idString = Session["idString"].ToString();
-            usernameString = Session["usernameString"].ToString();*/
             loadCards();
             loadCurrentOrders();
         }
@@ -113,7 +108,7 @@ namespace EcommAssignment2
         private void loadCurrentOrders()
         {
             SqlConnection con = createConnectionDB();
-            DataSet dataSet = fillDataSet(con, "select * from curr_orders_table where client_id=" + idString);
+            DataSet dataSet = fillDataSet(con, "select * from cart_table where client_id=" + idString);
             double totalPayment = 0;
 
             for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
@@ -124,7 +119,6 @@ namespace EcommAssignment2
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.Attributes.Add("class", "anOrder");
                 //twoDivs for label and value
-
 
                 HtmlGenericControl divLeft = new HtmlGenericControl("div");
                 divLeft.Attributes.Add("class", "divLeft");
@@ -175,18 +169,15 @@ namespace EcommAssignment2
                 totalPayment += priceTemp;
                 divTotal.Controls.Add(price);
                 divLeft.Controls.Add(divTotal);
-
                 
                 //<i class="fas fa-times"></i>
                 Button deleteItem = new Button();
                 deleteItem.Text = "Remove Item";
                 deleteItem.Attributes.Add("class", "btn btn-danger");
-                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["current_id"].ToString());
+                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["cart_id"].ToString());
                 deleteItem.Click += removeItem;
                 divLeft.Controls.Add(deleteItem);
-
                 currentOrdersSection.Controls.Add(divLeft);
-
             }
             closeConnectionDB(con);
 
@@ -204,15 +195,10 @@ namespace EcommAssignment2
             SqlConnection con = createConnectionDB();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"DELETE FROM curr_orders_table WHERE current_id = " + (sender as Button).Attributes["itemId"];
+            cmd.CommandText = $"DELETE FROM cart_table WHERE cart_id = " + (sender as Button).Attributes["itemId"];
             cmd.ExecuteNonQuery();
             closeConnectionDB(con);
             Response.Redirect("MainMenu.aspx", false);
-        }
-
-        private void nutritionalBtn_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Btn_Click(object sender, EventArgs e)
@@ -222,12 +208,9 @@ namespace EcommAssignment2
             SqlConnection con = createConnectionDB();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = $"insert into curr_orders_table values(@client_id, @menu_id, @delivery_date, @delivery_address, @store_id, @quantity)";
+            cmd.CommandText = $"insert into cart_table values(@client_id, @menu_id, @quantity)";
             cmd.Parameters.AddWithValue("client_id", idString);
             cmd.Parameters.AddWithValue("menu_id", (sender as Button).Attributes["idValue"].ToString());
-            cmd.Parameters.AddWithValue("delivery_date", System.DateTime.Now);
-            cmd.Parameters.AddWithValue("delivery_address", addressString);//by default, personal address could change it in curr orders table
-            cmd.Parameters.AddWithValue("store_id", DropDownList1.SelectedValue);//TODO at more restaurants later on
             cmd.Parameters.AddWithValue("quantity", temp[int.Parse((sender as Button).Attributes["idValue"].ToString()) - 1].Text);
             cmd.ExecuteNonQuery();
             closeConnectionDB(con);
@@ -235,11 +218,11 @@ namespace EcommAssignment2
 
             SqlCommand totalPrice = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            DataSet dataSet = fillDataSet(con, "select * from curr_orders_table where client_id=" + idString);
+            DataSet dataSet = fillDataSet(con, "SELECT * FROM cart_table WHERE client_id=" + idString);
 
             for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
             {
-                DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
+                DataSet temp = fillDataSet(con, "SELECT * FROM menu_table WHERE menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
 
                 total += double.Parse(temp.Tables[0].Rows[0]["price"].ToString()) * int.Parse(dataSet.Tables[0].Rows[c]["quantity"].ToString());
             }
@@ -253,17 +236,17 @@ namespace EcommAssignment2
             SqlConnection con = createConnectionDB();
             SqlCommand cmd = con.CreateCommand();
             cmd.CommandType = CommandType.Text;
-            cmd.CommandText = "DELETE FROM curr_orders_table WHERE client_id = " + idString;
+            cmd.CommandText = "DELETE FROM cart_table WHERE client_id = " + idString;
             cmd.ExecuteNonQuery();
             closeConnectionDB(con);
-
+            Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
         private SqlConnection createConnectionDB()
         {
 
-            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
-            //string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            //string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
             return con;
@@ -289,6 +272,7 @@ namespace EcommAssignment2
 
         protected void ordersButton_Click(object sender, EventArgs e)
         {
+
             Response.Redirect("orders_cart.aspx");
         }
     }

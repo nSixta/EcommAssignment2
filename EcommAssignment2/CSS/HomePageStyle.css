@@ -5,6 +5,11 @@
     background-color: #F5F5F5;
 }
 
+h1 {
+    background-color: black;
+    border-radius: 5px;
+}
+
 .card-section{
     padding: 15px;
 }
