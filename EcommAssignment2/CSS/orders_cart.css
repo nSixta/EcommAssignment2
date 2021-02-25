@@ -1,0 +1,38 @@
+﻿body {
+}
+
+.currentOrders {
+    width: 35%;
+}
+.deliveringOrders {
+    width: 35%;
+}
+.previousOrders {
+    width: 35%;
+}
+
+.currentOrderDivider {
+    border-bottom: .25px solid #bec1c4;
+    padding-bottom: 5px;
+    margin-bottom: 3px;
+}
+
+.divLeft {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-bottom: .5px solid #bec1c4;
+    padding: 5px;
+}
+
+.oneOrderDiv {
+    display: flex;
+    justify-content: space-between;
+}
+
+.totalPayment {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}

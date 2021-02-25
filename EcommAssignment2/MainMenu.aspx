@@ -3,21 +3,24 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Menu Menu</title>
     <link rel="stylesheet" href="CSS/MainMenuStyle.css" />
+    <script src="https://kit.fontawesome.com/bcb50e5738.js" crossorigin="anonymous"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="body-section">
         <div id="mainDiv" class="mainDiv" runat="server">
         </div>
         <div id="currentOrdersSection" class="current-orders-section" runat="server">
-            <h4>Current Orders</h4>
-            <asp:DropDownList ID="DropDownList1" runat="server">
-                <asp:ListItem Value="1">Restaurant1</asp:ListItem>
-                <asp:ListItem Value="2">Restaurant2</asp:ListItem>
-                <asp:ListItem Value="3">Restaurant3</asp:ListItem>
-            </asp:DropDownList>
-            <asp:Button ID="cancelButton" CssClass="cancelButton" runat="server" Text="Cancel" OnClick="cancelButton_Click" />
-            <asp:Button ID="ordersButton" CssClass="placeOrderButton" runat="server" Text="Place Order" OnClick="ordersButton_Click" />
-            <asp:Label ID="totalPriceLabel" runat="server" Text=""></asp:Label>
+            <h4 class="titles">Current Orders</h4>
+            <div class="currentOrderDivider">
+                <asp:DropDownList ID="DropDownList1" runat="server">
+                    <asp:ListItem Value="1" class="titles">Restaurant1</asp:ListItem>
+                    <asp:ListItem Value="2" class="titles">Restaurant2</asp:ListItem>
+                    <asp:ListItem Value="3" class="titles">Restaurant3</asp:ListItem>
+                </asp:DropDownList>
+                <asp:Button ID="cancelButton" class="btn btn-danger buttonText" runat="server" Text="Cancel" OnClick="cancelButton_Click" />
+                <asp:Button ID="ordersButton" class="btn btn-success buttonText" runat="server" Text="Place Order" OnClick="ordersButton_Click" />
+            </div>
+
         </div>
     </div>
 </asp:Content>
