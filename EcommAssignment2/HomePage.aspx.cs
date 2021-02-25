@@ -17,6 +17,10 @@ namespace EcommAssignment2
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["usernameString"] == null && Session["idString"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
             idString = Session["idString"].ToString();
             firstNameString = Session["firstNameString"].ToString();
             lastNameString = Session["lastNameString"].ToString();

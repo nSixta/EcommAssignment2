@@ -22,19 +22,20 @@ namespace EcommAssignment2
         TextBox[] temp;
         protected void Page_Load(object sender, EventArgs e)
         {
-            idString = Session["idString"].ToString();
-            lastNameString = Session["lastNameString"].ToString();
-            usernameString = Session["usernameString"].ToString();
-            passwordString = Session["passwordString"].ToString();
-            System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
-
             if (Session["usernameString"] == null && Session["idString"] == null)
             {
                 Response.Redirect("LoginPage.aspx");
             }
             idString = Session["idString"].ToString();
+            lastNameString = Session["lastNameString"].ToString();
             usernameString = Session["usernameString"].ToString();
+            passwordString = Session["passwordString"].ToString();
             addressString = Session["addressString"].ToString();
+            System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
+
+            
+            /*idString = Session["idString"].ToString();
+            usernameString = Session["usernameString"].ToString();*/
             loadCards();
             loadCurrentOrders();
         }
@@ -103,6 +104,7 @@ namespace EcommAssignment2
                 btn.Attributes.Add("idValue", dataSet.Tables[0].Rows[c]["menu_id"].ToString());
                 div.Controls.Add(btn);
                 //append To MainDiv
+
                 mainDiv.Controls.Add(div);
             }
             closeConnectionDB(con);
@@ -116,56 +118,98 @@ namespace EcommAssignment2
 
             for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
             {
-                //createDiv
-                HtmlGenericControl div = new HtmlGenericControl("div");
-                div.Attributes.Add("class", "oneOrderInQueue");
 
-                //menu_name
                 DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
-                Label lbl = new Label();
-                lbl.Text = temp.Tables[0].Rows[0]["name"].ToString();
-                div.Controls.Add(lbl);
+                //version4*******
+                HtmlGenericControl div = new HtmlGenericControl("div");
+                div.Attributes.Add("class", "anOrder");
+                //twoDivs for label and value
 
-                HtmlGenericControl br = new HtmlGenericControl("br");
-                div.Controls.Add(br);
+
+                HtmlGenericControl divLeft = new HtmlGenericControl("div");
+                divLeft.Attributes.Add("class", "divLeft");
+
+                HtmlGenericControl divName = new HtmlGenericControl("div");
+                divName.Attributes.Add("class", "oneOrderDiv");
+
+                //image
+                Image img = new Image();
+                img.ImageUrl = temp.Tables[0].Rows[0]["photo"].ToString();
+                img.Height = 30;
+                img.Width = 30;
+                divName.Controls.Add(img);
+
+                HtmlGenericControl lbl = new HtmlGenericControl("h4");
+                lbl.InnerHtml = temp.Tables[0].Rows[0]["name"].ToString();
+                divName.Controls.Add(lbl);
+
+                divLeft.Controls.Add(divName);
+
 
                 //quantity
-                Label quan1 = new Label();
-                quan1.Text = "Quantity: ";
-                div.Controls.Add(quan1);
 
-                Label quan = new Label();
-                quan.Text = dataSet.Tables[0].Rows[c]["quantity"].ToString();
-                div.Controls.Add(quan);
+                HtmlGenericControl divQuan = new HtmlGenericControl("div");
+                divQuan.Attributes.Add("class", "oneOrderDiv");
 
-                HtmlGenericControl br1 = new HtmlGenericControl("br");
-                div.Controls.Add(br1);
+                HtmlGenericControl quan1 = new HtmlGenericControl("h6");
+                quan1.InnerHtml = "Quantity: ";
+                divQuan.Controls.Add(quan1);
 
+                HtmlGenericControl quan = new HtmlGenericControl("p");
+                quan.InnerHtml = dataSet.Tables[0].Rows[c]["quantity"].ToString();
+                divQuan.Controls.Add(quan);
+                divLeft.Controls.Add(divQuan);
+                
                 //totalPrice
-                Label price1 = new Label();
-                price1.Text = "$";
-                div.Controls.Add(price1);
+
+                HtmlGenericControl divTotal = new HtmlGenericControl("div");
+                divTotal.Attributes.Add("class", "oneOrderDiv");
+
+                HtmlGenericControl price1 = new HtmlGenericControl("h6");
+                price1.InnerHtml = "Price:";
+                divTotal.Controls.Add(price1);
 
                 double priceTemp = double.Parse(temp.Tables[0].Rows[0]["price"].ToString()) * int.Parse(dataSet.Tables[0].Rows[c]["quantity"].ToString());
-                Label price = new Label();
-                price.Text = priceTemp.ToString();
+                HtmlGenericControl price = new HtmlGenericControl("p");
+                price.InnerHtml = "$" + priceTemp.ToString();
                 totalPayment += priceTemp;
-                div.Controls.Add(price);
+                divTotal.Controls.Add(price);
+                divLeft.Controls.Add(divTotal);
 
-                //TODO put this in the being delivered
-                /*//Btn
-                Button btn = new Button();
-                btn.Text = "Click if items are delivered";
-                btn.Click += itemsDelivered;
-                btn.Attributes.Add("idValue", dataSet.Tables[0].Rows[c]["menu_id"].ToString());
-                div.Controls.Add(btn);*/
+                
+                //<i class="fas fa-times"></i>
+                Button deleteItem = new Button();
+                deleteItem.Text = "Remove Item";
+                deleteItem.Attributes.Add("class", "btn btn-danger");
+                deleteItem.Attributes.Add("itemId", dataSet.Tables[0].Rows[c]["current_id"].ToString());
+                deleteItem.Click += removeItem;
+                divLeft.Controls.Add(deleteItem);
 
-                currentOrdersSection.Controls.Add(div);
+                currentOrdersSection.Controls.Add(divLeft);
 
             }
             closeConnectionDB(con);
-            //overAllTotal.Text = "" + totalPayment;
+
+            HtmlGenericControl totalPriceDiv = new HtmlGenericControl("div");
+            HtmlGenericControl totalPrice = new HtmlGenericControl("h3");
+            totalPrice.InnerHtml = "$" + totalPayment;
+            totalPriceDiv.Attributes.Add("class", "totalPayment");
+            totalPriceDiv.Controls.Add(totalPrice);
+            currentOrdersSection.Controls.Add(totalPriceDiv);
         }
+
+        private void removeItem(object sender, EventArgs e)
+        {
+            Response.Write("  " + (sender as Button).Attributes["itemId"]);
+            SqlConnection con = createConnectionDB();
+            SqlCommand cmd = con.CreateCommand();
+            cmd.CommandType = CommandType.Text;
+            cmd.CommandText = $"DELETE FROM curr_orders_table WHERE current_id = " + (sender as Button).Attributes["itemId"];
+            cmd.ExecuteNonQuery();
+            closeConnectionDB(con);
+            Response.Redirect("MainMenu.aspx", false);
+        }
+
         private void nutritionalBtn_Click(object sender, EventArgs e)
         {
 
@@ -200,8 +244,7 @@ namespace EcommAssignment2
                 total += double.Parse(temp.Tables[0].Rows[0]["price"].ToString()) * int.Parse(dataSet.Tables[0].Rows[c]["quantity"].ToString());
             }
             closeConnectionDB(con);
-            //overAllTotal.Text = "" + totalPayment;
-            totalPriceLabel.Text = "Total Price: " + total.ToString() + "$";
+
             Page.Response.Redirect(Page.Request.Url.ToString(), true);
         }
 
@@ -213,15 +256,14 @@ namespace EcommAssignment2
             cmd.CommandText = "DELETE FROM curr_orders_table WHERE client_id = " + idString;
             cmd.ExecuteNonQuery();
             closeConnectionDB(con);
-            totalPriceLabel.Text = "Total Price: " + 0 + "$";
 
         }
 
         private SqlConnection createConnectionDB()
         {
 
-            //String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
-            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+            //string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
             SqlConnection con = new SqlConnection(mycon);
             con.Open();
             return con;
@@ -247,7 +289,7 @@ namespace EcommAssignment2
 
         protected void ordersButton_Click(object sender, EventArgs e)
         {
-            Response.Redirect("orders.aspx");
+            Response.Redirect("orders_cart.aspx");
         }
     }
 }

@@ -10,12 +10,17 @@ namespace EcommAssignment2
 {
     public partial class MasterPage : System.Web.UI.MasterPage
     {
-        //String mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
-        string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+        string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
+        //string mycon = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
         string idString = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            if (Session["usernameString"] == null && Session["idString"] == null)
+            {
+                Response.Redirect("LoginPage.aspx");
+            }
             idString = Session["idString"].ToString();
             using (var connection = new SqlConnection(mycon))
             {
