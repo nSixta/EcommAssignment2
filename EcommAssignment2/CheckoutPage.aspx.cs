@@ -38,7 +38,7 @@ namespace EcommAssignment2
                 connection.Open();
                 using (var command = new SqlCommand("SELECT COUNT(*) FROM cart_table WHERE client_id = " + idString, connection))
                 {
-                    int rowsAmount = (int)command.ExecuteScalar(); // get the value of the count
+                    int rowsAmount = (int)command.ExecuteScalar();
                     checkOutCartNumber.Text = rowsAmount.ToString();
                 }
             }

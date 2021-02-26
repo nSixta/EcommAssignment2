@@ -28,7 +28,6 @@ namespace EcommAssignment2
             usernameString = Session["usernameString"].ToString();
             passwordString = Session["passwordString"].ToString();
             System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
-            //Response.Write(Session["currentTab"] == null? "null": Session["currentTab"].ToString());
             if (Session["currentTab"] == null || Session["currentTab"].ToString().Equals("current"))
             {
                 currentOrders.Style.Add("display", "block");
@@ -165,11 +164,9 @@ namespace EcommAssignment2
             {
 
                 DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
-                //version4*******
+
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.Attributes.Add("class", "anOrder");
-                //twoDivs for label and value
-
 
                 HtmlGenericControl divLeft = new HtmlGenericControl("div");
                 divLeft.Attributes.Add("class", "divLeft");
@@ -190,9 +187,7 @@ namespace EcommAssignment2
 
                 divLeft.Controls.Add(divName);
 
-
                 //quantity
-
                 HtmlGenericControl divQuan = new HtmlGenericControl("div");
                 divQuan.Attributes.Add("class", "oneOrderDiv");
 
@@ -206,7 +201,6 @@ namespace EcommAssignment2
                 divLeft.Controls.Add(divQuan);
 
                 //totalPrice
-
                 HtmlGenericControl divTotal = new HtmlGenericControl("div");
                 divTotal.Attributes.Add("class", "oneOrderDiv");
 
@@ -262,11 +256,9 @@ namespace EcommAssignment2
             {
 
                 DataSet temp = fillDataSet(con, "select * from menu_table where menu_id=" + dataSet.Tables[0].Rows[c]["menu_id"]);
-                //version4*******
+
                 HtmlGenericControl div = new HtmlGenericControl("div");
                 div.Attributes.Add("class", "anOrder");
-                //twoDivs for label and value
-
 
                 HtmlGenericControl divLeft = new HtmlGenericControl("div");
                 divLeft.Attributes.Add("class", "divLeft");
@@ -368,26 +360,6 @@ namespace EcommAssignment2
 
         private void payAllItems(object sender, EventArgs e)
         {
-            /*SqlConnection con = createConnectionDB();
-            DataSet dataSet = fillDataSet(con, "select * from cart_table where client_id=" + idString);
-            for (int c = 0; c < dataSet.Tables[0].Rows.Count; c++)
-            {
-                SqlCommand cmd = con.CreateCommand();
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = $"INSERT INTO order_table values(@client_id, @menu_id, @quantity)";
-                cmd.Parameters.AddWithValue("client_id", idString);
-                cmd.Parameters.AddWithValue("menu_id", dataSet.Tables[0].Rows[c]["menu_id"]);
-                cmd.Parameters.AddWithValue("quantity", dataSet.Tables[0].Rows[c]["quantity"]);
-                cmd.ExecuteNonQuery();
-            }
-            //remove from cart_table
-            SqlCommand cmd2 = con.CreateCommand();
-            cmd2.CommandType = CommandType.Text;
-            cmd2.CommandText = $"DELETE from cart_table";
-            cmd2.ExecuteNonQuery();
-            closeConnectionDB(con);
-            //reload screen
-            Session["currentTab"] = "current";*/
             Response.Redirect("CheckoutPage.aspx");
         }
 
