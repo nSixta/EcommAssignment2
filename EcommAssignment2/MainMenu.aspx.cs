@@ -17,7 +17,6 @@ namespace EcommAssignment2
         string passwordString = "";
         string idString = "";
         string usernameString = "";
-        string addressString = "";
         TextBox[] temp;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -29,7 +28,6 @@ namespace EcommAssignment2
             lastNameString = Session["lastNameString"].ToString();
             usernameString = Session["usernameString"].ToString();
             passwordString = Session["passwordString"].ToString();
-            addressString = Session["addressString"].ToString();
             System.Diagnostics.Debug.WriteLine(idString + " " + firstNameString + " " + lastNameString + " " + usernameString + " " + passwordString);
             loadCards();
             loadCurrentOrders();

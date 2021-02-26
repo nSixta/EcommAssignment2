@@ -17,7 +17,6 @@ namespace EcommAssignment2
         string lastNameString = "";
         string usernameString = "";
         string passwordString = "";
-        string addressString = "";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -56,14 +55,13 @@ namespace EcommAssignment2
                         lastNameString = dataSet.Tables[0].Rows[0]["last_name"].ToString();
                         usernameString = dataSet.Tables[0].Rows[0]["username"].ToString();
                         passwordString = dataSet.Tables[0].Rows[0]["password"].ToString();
-                        addressString = dataSet.Tables[0].Rows[0]["address"].ToString();
                     }
+
                     Session["idString"] = idString;
                     Session["firstNameString"] = firstNameString;
                     Session["lastNameString"] = lastNameString;
                     Session["passwordString"] = passwordString;
                     Session["usernameString"] = usernameString;
-                    Session["addressString"] = addressString;
                     Session["idString"] = idString;
                     Response.Redirect("HomePage.aspx");
                 }
