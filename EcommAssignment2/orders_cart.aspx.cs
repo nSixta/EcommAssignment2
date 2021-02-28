@@ -138,7 +138,6 @@ namespace EcommAssignment2
                 currentOrders.Controls.Add(divLeft);
 
             }
-            closeConnectionDB(con);
 
             HtmlGenericControl totalPriceDiv = new HtmlGenericControl("div");
             HtmlGenericControl totalPrice = new HtmlGenericControl("h3");
@@ -147,11 +146,15 @@ namespace EcommAssignment2
             totalPriceDiv.Controls.Add(totalPrice);
             currentOrders.Controls.Add(totalPriceDiv);
 
-            Button payItems = new Button();
-            payItems.Text = "Proceed to Checkout";
-            payItems.Attributes.Add("class", "btn btn-success");
-            payItems.Click += payAllItems;
-            currentOrders.Controls.Add(payItems);
+            if (dataSet.Tables[0].Rows.Count > 0)
+            {
+                Button payItems = new Button();
+                payItems.Text = "Proceed to Checkout";
+                payItems.Attributes.Add("class", "btn btn-success");
+                payItems.Click += payAllItems;
+                currentOrders.Controls.Add(payItems);
+            }
+            closeConnectionDB(con);
         }
 
         private void loadPreviousOrders()
