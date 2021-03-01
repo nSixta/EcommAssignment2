@@ -36,15 +36,13 @@
                             <a class="nav-link" href="orders_cart.aspx"><i class="fa fa-shopping-cart"></i>&nbsp;Cart&nbsp;<asp:Label ID="cardCountLabel" runat="server" Text="0"></asp:Label></a>
                         </li>
                         <li class="nav-item">
-                            <div style="position: absolute; right: 20px;">
-                                <a class="nav-link" href="LoginPage.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out</a>
-                            </div>
+                            <a class="nav-link" href="LoginPage.aspx"><i class="fa fa-sign-out" aria-hidden="true"></i>&nbsp;Log Out</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
-        <p style="font-size: 20px; text-align: center; background-color: #60a3bc; padding: 10px; margin:0px;"><strong>Free Shipping When Order is 25$ CAD and Over.</strong></p>
+        <p style="font-size: 20px; text-align: center; background-color: #60a3bc; padding: 10px; margin: 0px;"><strong>Free Shipping When Order is 25$ CAD and Over.</strong></p>
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
         </asp:ContentPlaceHolder>
     </form>
