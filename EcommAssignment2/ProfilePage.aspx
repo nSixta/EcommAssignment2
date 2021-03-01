@@ -3,7 +3,6 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <title>Profile</title>
     <link href="CSS/ProfilePageStyle.css" rel="stylesheet" />
-    <script src="Script/script.js"></script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="body-section">
@@ -20,15 +19,6 @@
         <input type="text" class="input" id="profilePassInput" />
         <br />
         <label ID="profilePasswordLabel"></label>
-        <br />
-        <br />
-
-        <asp:Label ID="Label6" runat="server" Text="Confirm Password:"></asp:Label>
-        <br />
-        <input type="text" class="input" id="profileConfirmPassInput" />
-        <br />
-        <label ID="profileConfirmPassLabel"></label>
-        <br />
         <br />
         <br />
 
@@ -54,4 +44,5 @@
             </div>
         </div>
     </div>
+    <script src="Script/script.js"></script>
 </asp:Content>
