@@ -56,7 +56,6 @@ namespace EcommAssignment2
                         usernameString = dataSet.Tables[0].Rows[0]["username"].ToString();
                         passwordString = dataSet.Tables[0].Rows[0]["password"].ToString();
                     }
-
                     Session["idString"] = idString;
                     Session["firstNameString"] = firstNameString;
                     Session["lastNameString"] = lastNameString;

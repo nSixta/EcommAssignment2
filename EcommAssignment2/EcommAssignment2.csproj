@@ -118,6 +118,8 @@
     <Content Include="CSS\MainMenuStyle.css" />
     <Content Include="orders_cart.aspx" />
     <Content Include="ProfilePage.aspx" />
+    <Content Include="ProfilePageCompletion.aspx" />
+    <Content Include="Script\script.js" />
     <Content Include="SignUpPage.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -191,6 +193,13 @@
     </Compile>
     <Compile Include="ProfilePage.aspx.designer.cs">
       <DependentUpon>ProfilePage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ProfilePageCompletion.aspx.cs">
+      <DependentUpon>ProfilePageCompletion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProfilePageCompletion.aspx.designer.cs">
+      <DependentUpon>ProfilePageCompletion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SignUpPage.aspx.cs">
