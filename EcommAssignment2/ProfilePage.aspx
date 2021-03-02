@@ -10,7 +10,6 @@
         <br />
         <input type="text" class="input" id="profileUsernameInput" />
         <br />
-        <label id="profileUsernameLabel"></label>
         <br />
         <br />
 
@@ -18,7 +17,6 @@
         <br />
         <input type="text" class="input" id="profilePassInput" />
         <br />
-        <label ID="profilePasswordLabel"></label>
         <br />
         <br />
 
