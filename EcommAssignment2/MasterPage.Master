@@ -24,7 +24,7 @@
                             <a class="nav-link" href="MainMenu.aspx"><i class="fa fa-home"></i>&nbsp;Menu</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="ContactPage.aspx"><i class="fa fa-address-book"></i>&nbsp;Contact</a>
+                            <a class="nav-link" href="ContactPage.aspx"><i class="fa fa-address-book"></i>&nbsp;Comment Section</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="AboutPage.aspx"><i class="fa fa-info"></i>&nbsp;About</a>
