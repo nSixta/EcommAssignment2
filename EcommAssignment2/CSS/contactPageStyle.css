@@ -1,7 +1,9 @@
 ﻿
 .body-section {
-    margin: auto;
-    width: 50%;
+
+}
+
+.message-input {
     background-color: rgba(255,255,255,0.85);
     padding: 20px;
     border-radius: 25px;
