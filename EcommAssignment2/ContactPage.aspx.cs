@@ -54,6 +54,8 @@ namespace EcommAssignment2
 
         protected void submitButton_Click(object sender, EventArgs e)
         {
+            DateTime date = DateTime.Now;
+            string dateString = date.ToString("MM-dd-yyyy");
             string message = messageInput.Text;
             //string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=F:\Semester5\Ecommerce\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
             string source = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\Sixta\Desktop\EcommAssignment2\EcommAssignment2\App_Data\dragonball_database.mdf;Integrated Security=True";
@@ -61,7 +63,7 @@ namespace EcommAssignment2
             connection.Open();
             SqlCommand insert = new SqlCommand("INSERT INTO comments_table VALUES (@name, @date_sent, @message)", connection);
             insert.Parameters.AddWithValue("name", usernameString);
-            insert.Parameters.AddWithValue("date_sent", DateTime.Now.ToString("MM/dd/yyyy"));
+            insert.Parameters.AddWithValue("date_sent", dateString);
             insert.Parameters.AddWithValue("message", message);
             insert.ExecuteNonQuery();
             connection.Close();
